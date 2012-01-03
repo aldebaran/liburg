@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: multi_urg.c 1683 2010-02-10 10:28:05Z satofumi $
+  $Id: multi_urg.c 1724 2010-02-25 10:43:11Z satofumi $
 */
 
 #include "urg_ctrl.h"
@@ -52,6 +52,7 @@ int main(int argc, char *argv[])
 
   /* Connection */
   for (i = 0; i < Urgs; ++i) {
+    urg_initialize(&urg[i]);
     ret = urg_connect(&urg[i], devices[i], 115200);
     if (ret < 0) {
       urg_exit(&urg[i], "urg_connect()");

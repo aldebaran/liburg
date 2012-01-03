@@ -4,7 +4,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: SerialDevice.cpp 1454 2009-10-26 03:59:39Z satofumi $
+  $Id: SerialDevice.cpp 1811 2010-04-30 16:12:05Z satofumi $
 */
 
 #include "SerialDevice.h"
@@ -25,69 +25,70 @@ using namespace std;
 
 struct SerialDevice::pImpl
 {
-  string error_message_;
-  long baudrate_;
-  RawSerialDevice raw_;
-  RingBuffer<char> ring_buffer_; //!< 受信バッファ
+    string error_message_;
+    long baudrate_;
+    RawSerialDevice raw_;
+    RingBuffer<char> ring_buffer_; //!< 受信バッファ
 
 
-  pImpl(void) : error_message_("no error"), baudrate_(0)
-  {
-  }
-
-
-  void updateRingBuffer(void)
-  {
-    enum { BufferSize = 2048 };
-    char buffer[BufferSize];
-
-    int n = raw_.receive(buffer, BufferSize, 0);
-    if (n > 0) {
-      ring_buffer_.put(buffer, n);
-    }
-  }
-
-
-  int receive(char* data, size_t count, int timeout)
-  {
-    if (! isConnected()) {
-      error_message_ = "no connection.";
-      return -1;
-    }
-    if (count == 0) {
-      return 0;
+    pImpl(void) : error_message_("no error"), baudrate_(0)
+    {
     }
 
-    size_t filled = 0;
 
-    size_t ring_filled = ring_buffer_.size();
-    if (ring_filled < count) {
-      updateRingBuffer();
+    void updateRingBuffer(void)
+    {
+        enum { BufferSize = 2048 };
+        char buffer[BufferSize];
+
+        int n = raw_.receive(buffer, BufferSize, 0);
+        if (n > 0) {
+            ring_buffer_.put(buffer, n);
+        }
     }
 
-    // バッファにデータがある場合、バッファからデータを格納する
-    size_t read_size = std::min(count, ring_buffer_.size());
-    ring_buffer_.get(data, read_size);
-    filled += read_size;
 
-    // バッファが空の場合、残りのデータはシステムから直接読み込む
-    read_size = max(0, static_cast<int>(count - filled));
-    if (read_size > 0) {
-      int n = raw_.receive(&data[filled], static_cast<int>(read_size), timeout);
-      if (n < 0) {
-	error_message_ = raw_.what();
-	return n;
-      }
-      filled += n;
+    int receive(char* data, size_t count, int timeout)
+    {
+        if (! isConnected()) {
+            error_message_ = "no connection.";
+            return -1;
+        }
+        if (count == 0) {
+            return 0;
+        }
+
+        size_t filled = 0;
+
+        size_t ring_filled = ring_buffer_.size();
+        if (ring_filled < count) {
+            updateRingBuffer();
+        }
+
+        // バッファにデータがある場合、バッファからデータを格納する
+        size_t read_size = std::min(count, ring_buffer_.size());
+        ring_buffer_.get(data, read_size);
+        filled += read_size;
+
+        // バッファが空の場合、残りのデータはシステムから直接読み込む
+        read_size = max(0, static_cast<int>(count - filled));
+        if (read_size > 0) {
+            int n = raw_.receive(&data[filled],
+                                 static_cast<int>(read_size), timeout);
+            if (n < 0) {
+                error_message_ = raw_.what();
+                return n;
+            }
+            filled += n;
+        }
+        return static_cast<int>(filled);
     }
-    return static_cast<int>(filled);
-  }
 
 
-  bool isConnected(void)
-  {
-    return raw_.isConnected();
-  }
+    bool isConnected(void)
+    {
+        return raw_.isConnected();
+    }
 };
 
 
@@ -98,116 +99,116 @@ SerialDevice::SerialDevice(void) : pimpl(new pImpl)
 
 SerialDevice::~SerialDevice(void)
 {
-  disconnect();
+    disconnect();
 }
 
 
 const char* SerialDevice::what(void) const
 {
-  return pimpl->error_message_.c_str();
+    return pimpl->error_message_.c_str();
 }
 
 
 bool SerialDevice::connect(const char* device, long baudrate)
 {
-  disconnect();
-  clear();
-  if (! pimpl->raw_.connect(device, baudrate)) {
-    pimpl->error_message_ = pimpl->raw_.what();
-    return false;
-  } else {
-    return true;
-  }
+    disconnect();
+    clear();
+    if (! pimpl->raw_.connect(device, baudrate)) {
+        pimpl->error_message_ = pimpl->raw_.what();
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
 void SerialDevice::disconnect(void)
 {
-  return pimpl->raw_.disconnect();
+    return pimpl->raw_.disconnect();
 }
 
 
 bool SerialDevice::setBaudrate(long baudrate)
 {
-  if (! pimpl->raw_.setBaudrate(baudrate)) {
-    pimpl->error_message_ = pimpl->raw_.what();
-    pimpl->baudrate_ = 0;
-    return false;
-  }
-  pimpl->baudrate_ = baudrate;
-  return true;
+    if (! pimpl->raw_.setBaudrate(baudrate)) {
+        pimpl->error_message_ = pimpl->raw_.what();
+        pimpl->baudrate_ = 0;
+        return false;
+    }
+    pimpl->baudrate_ = baudrate;
+    return true;
 }
 
 
 long SerialDevice::baudrate(void) const
 {
-  return pimpl->baudrate_;
+    return pimpl->baudrate_;
 }
 
 
 bool SerialDevice::isConnected(void) const
 {
-  return pimpl->isConnected();
+    return pimpl->isConnected();
 }
 
 
 int SerialDevice::send(const char* data, size_t count)
 {
-  if (! isConnected()) {
-    pimpl->error_message_ = "no connection.";
-    return 0;
-  }
+    if (! isConnected()) {
+        pimpl->error_message_ = "no connection.";
+        return 0;
+    }
 
-  int n = pimpl->raw_.send(data, static_cast<int>(count));
-  if (n < 0) {
-    pimpl->error_message_ = pimpl->raw_.what();
-  }
-  return n;
+    int n = pimpl->raw_.send(data, static_cast<int>(count));
+    if (n < 0) {
+        pimpl->error_message_ = pimpl->raw_.what();
+    }
+    return n;
 }
 
 
 int SerialDevice::receive(char* data, size_t count, int timeout)
 {
-  if (! isConnected()) {
-    pimpl->error_message_ = "no connection.";
-    return 0;
-  }
+    if (! isConnected()) {
+        pimpl->error_message_ = "no connection.";
+        return 0;
+    }
 
-  return pimpl->receive(data, count, timeout);
+    return pimpl->receive(data, count, timeout);
 }
 
 
 size_t SerialDevice::size(void) const
 {
-  pimpl->updateRingBuffer();
-  return pimpl->ring_buffer_.size();
+    pimpl->updateRingBuffer();
+    return pimpl->ring_buffer_.size();
 }
 
 
 void SerialDevice::flush(void)
 {
-  if (! isConnected()) {
-    pimpl->error_message_ = "no connection.";
-    return;
-  }
+    if (! isConnected()) {
+        pimpl->error_message_ = "no connection.";
+        return;
+    }
 
-  return pimpl->raw_.flush();
+    return pimpl->raw_.flush();
 }
 
 
 void SerialDevice::clear(void)
 {
-  pimpl->raw_.flush();
-  pimpl->ring_buffer_.clear();
+    pimpl->raw_.flush();
+    pimpl->ring_buffer_.clear();
 }
 
 
 void SerialDevice::ungetc(const char ch)
 {
-  if (! isConnected()) {
-    pimpl->error_message_ = "no connection.";
-    return;
-  }
+    if (! isConnected()) {
+        pimpl->error_message_ = "no connection.";
+        return;
+    }
 
-  pimpl->ring_buffer_.ungetc(ch);
+    pimpl->ring_buffer_.ungetc(ch);
 }

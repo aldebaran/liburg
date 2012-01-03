@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: detect_os.h 783 2009-05-05 08:56:26Z satofumi $
+  $Id: detect_os.h 1939 2010-11-22 02:05:24Z satofumi $
 */
 
 #if defined _MSC_VER || defined __CYGWIN__ || defined __MINGW32__
@@ -27,6 +27,7 @@
 #else
 // ŒŸo‚Å‚«‚È‚¢‚Æ‚«‚ğAMac ˆµ‚¢‚É‚µ‚Ä‚µ‚Ü‚¤
 #define MAC_OS
+//#define EMBEDDED_OS
 #endif
 
 #endif /* !QRK_C_DETECT_OS_H */

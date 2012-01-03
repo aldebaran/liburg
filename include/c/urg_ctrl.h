@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: urg_ctrl.h 1723 2010-02-24 23:30:34Z satofumi $
+  $Id: urg_ctrl.h 1954 2011-07-17 22:08:18Z satofumi $
 
   \todo Define examples for each functions
 */
@@ -153,7 +153,7 @@ extern int urg_versionLines(urg_t *urg, char* lines[], int lines_max);
 
   \see urg_maxDistance(), urg_minDistance(), urg_scanMsec(), urg_dataMax()
 
-  Execution example of get_parameters.c  (Classic-URG)
+  Execution example of get_parameters.c (URG-04LX)
   \verbatim
 % ./get_parameters
 urg_getParameters: No Error.
@@ -245,7 +245,7 @@ extern int urg_scanMsec(const urg_t *urg);
 n = urg_receiveData(&urg, data, data_max);
 
 min_distance = urg_minDistance(&urg);
-max_distance = urg_minDistance(&urg);
+max_distance = urg_maxDistance(&urg);
 
 // Output only valid data
 for (i = 0; i < n; ++i) {
@@ -402,7 +402,7 @@ extern int urg_receiveData(urg_t *urg, long data[], int data_max);
   \param[in] data_max Maximum number of data that can be received
   \param[out] intensity Storage location of intensity of received data.
 
-  \attention Applicable only to Classic-URG  (currently 2008-12-24)
+  \attention Applicable only to URG-04LX (currently 2008-12-24)
 */
 extern int urg_receiveDataWithIntensity(urg_t *urg, long data[], int data_max,
                                         long intensity[]);
@@ -417,7 +417,7 @@ extern int urg_receiveDataWithIntensity(urg_t *urg, long data[], int data_max,
   \param[in] first_index Index of the first data stored.
   \param[in] last_index Index of the last data stored
 
-  \retval 0 > Number of data received
+  \retval 0> Number of data received
   \retval <0 Error
 
   \see gd_scan.c, md_scan.c
@@ -503,7 +503,7 @@ extern int urg_index2deg(const urg_t *urg, int index);
   \image html urg_sensor_radian.png Front of the sensor is a positive in X axis
 
   \param[in,out] urg Structure of URG control
-  \param[in] Angle(radian)
+  \param[in] radian Angle(radian)
 
   \return Index
 
@@ -516,7 +516,7 @@ extern int urg_rad2index(const urg_t *urg, double radian);
   \brief Angle(degree) is converted into index
 
   \param[in,out] urg Structure of URG control
-  \param[in] Angle(degre)
+  \param[in] degree Angle(degre)
 
   \return Index value
 

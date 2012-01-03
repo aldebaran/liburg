@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: scip_handler.h 1714 2010-02-21 20:53:28Z satofumi $
+  $Id: scip_handler.h 1948 2011-04-19 09:59:29Z satofumi $
 */
 
 #include "urg_parameter_t.h"
@@ -41,6 +41,7 @@ extern int scip_send(serial_t *serial, const char *send_command);
   When the command response is included in expected_ret, the return value of this function becomes 0 (normality).
 
   \param[out] serial Structure of serial control
+  \param[in] command_first first command
   \param[out] return_code Return value
   \param[in] expected_ret Return value considered to be normal
   \param[in] timeout Time out [msec]

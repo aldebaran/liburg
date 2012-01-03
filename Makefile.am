@@ -1,7 +1,5 @@
 ## Makefile.am -- Process this file with automake to produce Makefile.in
 
-ACLOCAL_AMFLAGS = -I m4
-
 SUBDIRS = include src samples
 bin_SCRIPTS = urg-config c_urg-config
 EXTRA_DIST = README.txt ChangeLog vc8/c/c_urg.vcproj vc8/cpp/urg.vcproj vc6/c/c_urg.dsp

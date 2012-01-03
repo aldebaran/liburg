@@ -4,7 +4,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: urg_ctrl.c 1714 2010-02-21 20:53:28Z satofumi $
+  $Id: urg_ctrl.c 1950 2011-05-07 08:18:39Z satofumi $
 */
 
 #include "math_utils.h"
@@ -14,8 +14,8 @@
 #include "serial_ctrl.h"
 #include "serial_utils.h"
 #include "serial_errno.h"
-#include "ticks.h"
-#include "delay.h"
+#include "urg_ticks.h"
+#include "urg_delay.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -45,7 +45,7 @@ static int urg_firstConnection(urg_t *urg, long baudrate)
 {
   long try_baudrates[] = { 115200, 19200, 38400 };
   int try_size = sizeof(try_baudrates) / sizeof(try_baudrates[0]);
-  int pre_ticks;
+  long pre_ticks;
   int reply = 0;
   int ret;
   int i;
@@ -107,15 +107,15 @@ static int urg_firstConnection(urg_t *urg, long baudrate)
     }
 
     /* Change the baud rate as specified by URG */
-    pre_ticks = ticks();
+    pre_ticks = urg_ticks();
     if (scip_ss(&urg->serial_, baudrate) < 0) {
       return UrgSsFail;
 
     } else {
       /* In case of serial communication, it is necessary to wait for
          one scan after baud rate is changed. */
-      int reply_msec = ticks() - pre_ticks;
-      delay((reply_msec * 4 / 3) + 10);
+      long reply_msec = urg_ticks() - pre_ticks;
+      urg_delay((reply_msec * 4 / 3) + 10);
 
       return serial_setBaudrate(&urg->serial_, baudrate);
     }
@@ -147,7 +147,7 @@ int urg_connect(urg_t *urg, const char *device, long baudrate)
     return ret;
   }
   // change timestamp resolution in Windows OS
-  delay(0);
+  urg_delay(0);
 
   /* URG connection */
   ret = urg_firstConnection(urg, baudrate);
@@ -211,12 +211,10 @@ int urg_versionLines(urg_t *urg, char* lines[], int lines_max)
 /* Send PP command. Analyse and store the response */
 int urg_parameters(urg_t *urg, urg_parameter_t* parameters)
 {
-  int ret = 0;
-
   if (urg_isConnected(urg)) {
     *parameters = urg->parameters_;
   } else {
-    ret = scip_pp(&urg->serial_, &urg->parameters_);
+    scip_pp(&urg->serial_, &urg->parameters_);
     if (parameters) {
       *parameters = urg->parameters_;
     }
@@ -404,7 +402,7 @@ static long decode(const char* data, int data_byte)
 
 static int convertRawData(long data[], int data_max,
                           const char* buffer, int buffer_size, int filled,
-                          int is_me_type, int data_bytes, int skip_lines,
+                          int data_bytes, int skip_lines,
                           int store_last, urg_t* urg)
 {
   int n;
@@ -413,8 +411,6 @@ static int convertRawData(long data[], int data_max,
   int remain_byte = urg->remain_byte_;
   long length;
   long *data_p = data + filled;
-
-  (void)is_me_type;
 
   if (data_max > store_last) {
     data_max = store_last;
@@ -442,13 +438,6 @@ static int convertRawData(long data[], int data_max,
       *data_p++ = length;
     }
     filled += n;
-#if 0
-    if (is_me_type) {
-      for (j = 0; j < skip_lines; ++j) {
-        /* !!! */
-      }
-    }
-#endif
   }
 
   /* Process one line of data */
@@ -462,14 +451,6 @@ static int convertRawData(long data[], int data_max,
       *data_p++ = length;
       ++filled;
     }
-
-#if 0
-    if (is_me_type) {
-      for (j = 0; j < skip_lines; ++j) {
-        /* !!! */
-      }
-    }
-#endif
   }
 
   /* Save the remaining data */
@@ -528,13 +509,12 @@ static int internal_receiveData(urg_t *urg, long data[], int data_max,
   int is_echoback = False;
   int n;
 
-  int is_me_type = 0;
   char current_type[] = "xx";
   int current_first = -1;
-  int current_last = -1;
-  int current_skip_lines = -1;
-  int current_skip_frames = -1;
-  int current_capture_times = -1;
+  //int current_last = -1;
+  //int current_skip_lines = -1;
+  //int current_skip_frames = -1;
+  //int current_capture_times = -1;
   int current_data_bytes = 3;
   int dummy_last;
   int timeout = ScipTimeout;
@@ -546,7 +526,7 @@ static int internal_receiveData(urg_t *urg, long data[], int data_max,
 
   while (1) {
     n = serial_getLine(&urg->serial_, buffer, ScipLineWidth, timeout);
-    //fprintf(stderr, "%d: %s\n", ticks(), buffer);
+    //fprintf(stderr, "%d: %s\n", urg_ticks(), buffer);
     if (n <= 0) {
       if (is_echoback) {
         is_echoback = False;
@@ -570,7 +550,7 @@ static int internal_receiveData(urg_t *urg, long data[], int data_max,
     if (lines > Timestamp) {
       /* convert data */
       filled = convertRawData(data, data_max, buffer, n - 1, filled,
-                              is_me_type, current_data_bytes, skip_lines,
+                              current_data_bytes, skip_lines,
                               store_last, urg);
 
     } else if (lines == EchoBack) {
@@ -586,14 +566,11 @@ static int internal_receiveData(urg_t *urg, long data[], int data_max,
       /* Response command */
       current_type[0] = buffer[0];
       current_type[1] = buffer[1];
-      if (! strncmp("ME", current_type, 2)) {
-        is_me_type = 1;
-      }
 
       /* Initialisation of receiving settings */
       current_first = atoi_substr(&buffer[2], 4);
-      current_last = atoi_substr(&buffer[6], 4);
-      current_skip_lines = atoi_substr(&buffer[10], 2);
+      //current_last = atoi_substr(&buffer[6], 4);
+      //current_skip_lines = atoi_substr(&buffer[10], 2);
 
       if ((current_first - store_first) >= data_max) {
         /* no data */
@@ -612,8 +589,8 @@ static int internal_receiveData(urg_t *urg, long data[], int data_max,
         urg->remain_times_ = 0;
 
       } else {
-        current_skip_frames = atoi_substr(&buffer[12], 1);
-        current_capture_times = atoi_substr(&buffer[13], 2);
+        //current_skip_frames = atoi_substr(&buffer[12], 1);
+        //current_capture_times = atoi_substr(&buffer[13], 2);
 
         /* In case of MD/MS, store the remaining number of scans. */
         urg->remain_times_ = atoi(&buffer[13]);

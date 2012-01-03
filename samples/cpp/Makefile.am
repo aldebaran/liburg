@@ -1,35 +1,31 @@
 ## Makefile.am -- Process this file with automake to produce Makefile.in
 
-if BOOST_COMPILE_COND
-BOOST_DEPEND_FILES = findUrgPortsSample urg_acquire
-endif
-
 INCLUDES = $(CPP_INCLUDES)
-noinst_PROGRAMS = viewVvSample viewPpSample gdCaptureSample mdCaptureSample viewSerialIdSample captureIntensitySample connectById $(BOOST_DEPEND_FILES)
+noinst_PROGRAMS = versionLines parameterLines gdScan mdScan intensityScan serialId connectById findUrgPorts acquire_data thread_scan
 
-viewVvSample_SOURCES = viewVvSample.cpp
-viewPpSample_SOURCES = viewPpSample.cpp
-gdCaptureSample_SOURCES = gdCaptureSample.cpp
-mdCaptureSample_SOURCES = mdCaptureSample.cpp
-findUrgPortsSample_SOURCES = findUrgPortsSample.cpp
-viewSerialIdSample_SOURCES = viewSerialIdSample.cpp
-urg_acquire_SOURCES = urg_acquire.cpp
-captureIntensitySample_SOURCES = captureIntensitySample.cpp
+versionLines_SOURCES = versionLines.cpp
+parameterLines_SOURCES = parameterLines.cpp
+gdScan_SOURCES = gdScan.cpp
+mdScan_SOURCES = mdScan.cpp
+intensityScan_SOURCES = intensityScan.cpp
+serialId_SOURCES = serialId.cpp
 connectById_SOURCES = connectById.cpp
+findUrgPorts_SOURCES = findUrgPorts.cpp
+acquire_data_SOURCES = acquire_data.cpp
+thread_scan_SOURCES = thread_scan.cpp
 
 AM_CXXFLAGS = $(SDL_CFLAGS)
 LIBS = $(SAMPLES_LIBS_PATH) $(INSTALL_LIBS)
 
 EXTRA_DIST = \
-	findUrgPortsSample.cpp \
-	urg_acquire.cpp \
 	samples_cpp.sln \
-	viewVvSample_vc8/viewVvSample.vcproj \
-	viewPpSample_vc8/viewPpSample.vcproj \
-	gdCaptureSample_vc8/gdCaptureSample.vcproj \
-	mdCaptureSample_vc8/mdCaptureSample.vcproj \
-	findUrgPortsSample_vc8/findUrgPortsSample.vcproj \
-	viewSerialIdSample_vc8/viewSerialIdSample.vcproj \
-	urg_acquire_vc8/urg_acquire.vcproj \
-	captureIntensitySample_vc8/captureIntensitySample.vcproj \
-	connectById_vc8/connectById.vcproj
+	versionLines_vc8/versionLines.vcproj \
+	parameterLines_vc8/parameterLines.vcproj \
+	gdScan_vc8/gdScan.vcproj \
+	mdScan_vc8/mdScan.vcproj \
+	intensityScan_vc8/intensityScan.vcproj \
+	serialId_vc8/serialId.vcproj \
+	connectById_vc8/connectById.vcproj \
+	findUrgPorts_vc8/findUrgPorts.vcproj \
+	acquire_data_vc8/acquire_data.vcproj \
+	thread_scan_vc8/thread_scan.vcproj

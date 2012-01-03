@@ -22,7 +22,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\; ..\..\..\SDL_devel\include; ..\..\src\cpp\connection\sdl; ..\..\src\cpp\connection; ..\..\src\cpp\system; ..\..\src\cpp\coordinate; ..\..\src\cpp\monitor; ..\..\src\cpp\common; ..\..\src\cpp\geometry; ..\..\src\cpp\urg; .;"
+				AdditionalIncludeDirectories=".\; ..\..\..\SDL_devel\include; ..\..\src\cpp\connection\sdl; ..\..\src\cpp\connection; ..\..\src\cpp\system; ..\..\src\cpp\coordinate; ..\..\src\cpp\monitor; ..\..\src\cpp\common; ..\..\src\cpp\geometry; ..\..\src\cpp\urg;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="TRUE"
 				RuntimeLibrary="2"
@@ -65,7 +65,7 @@
 			ManagedExtensions="0">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".\; ..\..\..\SDL_devel\include; ..\..\src\cpp\connection\sdl; ..\..\src\cpp\connection; ..\..\src\cpp\system; ..\..\src\cpp\coordinate; ..\..\src\cpp\monitor; ..\..\src\cpp\common; ..\..\src\cpp\geometry; ..\..\src\cpp\urg; .;"
+				AdditionalIncludeDirectories=".\; ..\..\..\SDL_devel\include; ..\..\src\cpp\connection\sdl; ..\..\src\cpp\connection; ..\..\src\cpp\system; ..\..\src\cpp\coordinate; ..\..\src\cpp\monitor; ..\..\src\cpp\common; ..\..\src\cpp\geometry; ..\..\src\cpp\urg;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="TRUE"
 				RuntimeLibrary="2"
@@ -114,6 +114,8 @@
 			<File RelativePath="..\..\src\cpp\connection\sdl\SdlNetInit.cpp"></File>
 			<File RelativePath="..\..\src\cpp\connection\SerialDevice.cpp"></File>
 			<File RelativePath="..\..\src\cpp\connection\ConnectionUtils.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\FindComPorts.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\isUsingComDriver.cpp"></File>
 			<File RelativePath="..\..\src\cpp\system\MonitorModeManager.cpp"></File>
 			<File RelativePath="..\..\src\cpp\system\SdlInit.cpp"></File>
 			<File RelativePath="..\..\src\cpp\system\Thread.cpp"></File>
@@ -133,15 +135,15 @@
 			<File RelativePath="..\..\src\cpp\monitor\DeviceIpManager.cpp"></File>
 			<File RelativePath="..\..\src\cpp\monitor\LogNameHolder.cpp"></File>
 			<File RelativePath="..\..\src\cpp\monitor\mConnection.cpp"></File>
-			<File RelativePath="..\..\src\cpp\monitor\mUrgCtrl.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\mUrgDevice.cpp"></File>
 			<File RelativePath="..\..\src\cpp\monitor\UrgServer.cpp"></File>
 			<File RelativePath="..\..\src\cpp\common\split.cpp"></File>
 			<File RelativePath="..\..\src\cpp\geometry\Angle.cpp"></File>
-			<File RelativePath="..\..\src\cpp\urg\UrgCtrl.cpp"></File>
+			<File RelativePath="..\..\src\cpp\urg\UrgDevice.cpp"></File>
 			<File RelativePath="..\..\src\cpp\urg\ScipHandler.cpp"></File>
 			<File RelativePath="..\..\src\cpp\urg\findUrgPorts.cpp"></File>
 			<File RelativePath="..\..\src\cpp\urg\UrgUsbCom.cpp"></File>
-			<File RelativePath="..\..\src\cpp\connection\findComPorts.cpp"></File>
+			<File RelativePath="..\..\src\cpp\urg\UrgCtrl.cpp"></File>
 
 		</Filter>
 		<Filter

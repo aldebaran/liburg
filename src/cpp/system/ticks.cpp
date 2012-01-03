@@ -4,7 +4,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: ticks.cpp 1053 2009-06-20 22:52:51Z satofumi $
+  $Id: ticks.cpp 1727 2010-02-26 08:56:46Z satofumi $
 */
 
 #include "ticks.h"
@@ -12,7 +12,7 @@
 #include "MonitorModeManager.h"
 
 
-int qrk::ticks(void)
+long qrk::ticks(void)
 {
   // !!! delay() ‚Æ‹¤’Ê‚É‚·‚×‚«
   static bool mode_unknown = true;

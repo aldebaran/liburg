@@ -7,13 +7,13 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: system_ticks.h 1053 2009-06-20 22:52:51Z satofumi $
+  $Id: system_ticks.h 1727 2010-02-26 08:56:46Z satofumi $
 */
 
 
 namespace qrk
 {
-  extern int system_ticks(void);
+  extern long system_ticks(void);
 }
 
 #endif /* !QRK_SYSTEM_TICKS_H */

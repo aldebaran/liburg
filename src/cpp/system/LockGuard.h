@@ -7,10 +7,11 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: LockGuard.h 783 2009-05-05 08:56:26Z satofumi $
+  $Id: LockGuard.h 1954 2011-07-17 22:08:18Z satofumi $
 */
 
 #include <memory>
+#include <cstddef>
 
 
 namespace qrk
@@ -26,8 +27,8 @@ namespace qrk
     LockGuard(const LockGuard& rhs);
     LockGuard& operator = (const LockGuard& rhs);
 
-    void* operator new (size_t);
-    void* operator new[] (size_t);
+    //void* operator new (size_t);
+    //void* operator new[] (size_t);
 
     struct pImpl;
     std::auto_ptr<pImpl> pimpl;

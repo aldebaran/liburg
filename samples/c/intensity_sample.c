@@ -5,7 +5,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: intensity_sample.c 1683 2010-02-10 10:28:05Z satofumi $
+  $Id: intensity_sample.c 1950 2011-05-07 08:18:39Z satofumi $
 */
 
 #include "urg_ctrl.h"
@@ -54,7 +54,7 @@ static void printData(urg_t *urg, urg_parameter_t *parameter,
 int main(int argc, char *argv[])
 {
   enum {
-    CaptureTimes = 10,
+    CaptureTimes = 1,
   };
 
 #ifdef WINDOWS_OS
@@ -66,14 +66,15 @@ int main(int argc, char *argv[])
   int data_max;
   long* data;
   long* intensity;
-  int scan_msec;
+  //int scan_msec;
   urg_parameter_t parameter;
   int ret;
   int n;
   int i;
+  urg_t urg;
 
   /* Connection */
-  urg_t urg;
+  urg_initialize(&urg);
   ret = urg_connect(&urg, device, 115200);
   if (ret < 0) {
     urg_exit(&urg, "urg_connect()");
@@ -93,7 +94,7 @@ int main(int argc, char *argv[])
   }
 
   urg_parameters(&urg, &parameter);
-  scan_msec = urg_scanMsec(&urg);
+  //scan_msec = urg_scanMsec(&urg);
 
   if (strcmp("UTM-30LX", urg_model(&urg))) {
     /* Top-URG is excluded */

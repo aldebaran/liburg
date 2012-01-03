@@ -7,19 +7,19 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: ticks.h 1402 2009-10-11 12:45:16Z satofumi $
+  $Id: ticks.h 1811 2010-04-30 16:12:05Z satofumi $
 */
 
 
 //! Quick Robot Development Kit
 namespace qrk
 {
-  /*!
-    \brief タイムスタンプの取得
+    /*!
+      \brief タイムスタンプの取得
 
-    \retval タイムスタンプ [msec]
-  */
-  extern int ticks(void);
+      \retval タイムスタンプ [msec]
+    */
+    extern long ticks(void);
 }
 
 #endif /* !QRK_TICKS_H */

@@ -5,10 +5,10 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: captureIntensitySample.cpp 1684 2010-02-10 23:56:38Z satofumi $
+  $Id: captureIntensitySample.cpp 1845 2010-06-10 22:51:43Z satofumi $
 */
 
-#include "UrgCtrl.h"
+#include "UrgDevice.h"
 #include "TcpipSocket.h"
 #include "delay.h"
 #include <SDL.h>
@@ -23,13 +23,13 @@ int main(int argc, char *argv[])
   const char address[] = "192.168.0.10";
   short port = 10940;
 
+  UrgDevice urg;
   TcpipSocket tcpip;
   if (! tcpip.connect(address, port)) {
     printf("TcpipSocket::connect: %s\n", tcpip.what());
     exit(1);
   }
 
-  UrgCtrl urg;
   urg.setConnection(&tcpip);
   urg.loadParameter();
 

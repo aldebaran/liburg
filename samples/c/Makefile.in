@@ -33,15 +33,14 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 noinst_PROGRAMS = get_parameters$(EXEEXT) get_version_lines$(EXEEXT) \
-	gd_scan$(EXEEXT) md_scan$(EXEEXT) expand_2d$(EXEEXT) \
+	gd_scan$(EXEEXT) md_scan$(EXEEXT) convert_2d$(EXEEXT) \
 	multi_urg$(EXEEXT) get_timestamp$(EXEEXT) \
 	capture_sample$(EXEEXT) partial_scan$(EXEEXT) \
 	intensity_sample$(EXEEXT)
 subdir = samples/c
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/ax_boost_base.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -51,9 +50,9 @@ PROGRAMS = $(noinst_PROGRAMS)
 am_capture_sample_OBJECTS = capture_sample.$(OBJEXT)
 capture_sample_OBJECTS = $(am_capture_sample_OBJECTS)
 capture_sample_LDADD = $(LDADD)
-am_expand_2d_OBJECTS = expand_2d.$(OBJEXT)
-expand_2d_OBJECTS = $(am_expand_2d_OBJECTS)
-expand_2d_LDADD = $(LDADD)
+am_convert_2d_OBJECTS = convert_2d.$(OBJEXT)
+convert_2d_OBJECTS = $(am_convert_2d_OBJECTS)
+convert_2d_LDADD = $(LDADD)
 am_gd_scan_OBJECTS = gd_scan.$(OBJEXT)
 gd_scan_OBJECTS = $(am_gd_scan_OBJECTS)
 gd_scan_LDADD = $(LDADD)
@@ -90,12 +89,12 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(capture_sample_SOURCES) $(expand_2d_SOURCES) \
+SOURCES = $(capture_sample_SOURCES) $(convert_2d_SOURCES) \
 	$(gd_scan_SOURCES) $(get_parameters_SOURCES) \
 	$(get_timestamp_SOURCES) $(get_version_lines_SOURCES) \
 	$(intensity_sample_SOURCES) $(md_scan_SOURCES) \
 	$(multi_urg_SOURCES) $(partial_scan_SOURCES)
-DIST_SOURCES = $(capture_sample_SOURCES) $(expand_2d_SOURCES) \
+DIST_SOURCES = $(capture_sample_SOURCES) $(convert_2d_SOURCES) \
 	$(gd_scan_SOURCES) $(get_parameters_SOURCES) \
 	$(get_timestamp_SOURCES) $(get_version_lines_SOURCES) \
 	$(intensity_sample_SOURCES) $(md_scan_SOURCES) \
@@ -110,8 +109,6 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
-BOOST_CPPFLAGS = @BOOST_CPPFLAGS@
-BOOST_LDFLAGS = @BOOST_LDFLAGS@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -127,6 +124,7 @@ C_INCLUDES = @C_INCLUDES@
 C_INSTALL_LIBS = @C_INSTALL_LIBS@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -145,12 +143,13 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
-LIBS = $(SAMPLES_LIBS_PATH) $(C_INSTALL_LIBS) -lm
+LIBS = $(SAMPLES_LIBS_PATH) $(C_INSTALL_LIBS)
 LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
+MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
 NM = @NM@
 NMEDIT = @NMEDIT@
@@ -179,6 +178,7 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
@@ -212,7 +212,6 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
-lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -233,7 +232,7 @@ get_version_lines_SOURCES = get_version_lines.c
 gd_scan_SOURCES = gd_scan.c
 md_scan_SOURCES = md_scan.c
 capture_sample_SOURCES = capture_sample.c
-expand_2d_SOURCES = expand_2d.c
+convert_2d_SOURCES = convert_2d.c
 multi_urg_SOURCES = multi_urg.c
 get_timestamp_SOURCES = get_timestamp.c
 intensity_sample_SOURCES = intensity_sample.c
@@ -244,7 +243,7 @@ EXTRA_DIST = \
 	get_version_lines_vc8/get_version_lines.vcproj \
 	gd_scan_vc8/gd_scan.vcproj \
 	md_scan_vc8/md_scan.vcproj \
-	expand_2d_vc8/expand_2d.vcproj \
+	convert_2d_vc8/convert_2d.vcproj \
 	multi_urg_vc8/multi_urg.vcproj \
 	get_timestamp_vc8/get_timestamp.vcproj \
 	capture_sample_vc8/capture_sample.vcproj \
@@ -294,9 +293,9 @@ clean-noinstPROGRAMS:
 capture_sample$(EXEEXT): $(capture_sample_OBJECTS) $(capture_sample_DEPENDENCIES) 
 	@rm -f capture_sample$(EXEEXT)
 	$(LINK) $(capture_sample_OBJECTS) $(capture_sample_LDADD) $(LIBS)
-expand_2d$(EXEEXT): $(expand_2d_OBJECTS) $(expand_2d_DEPENDENCIES) 
-	@rm -f expand_2d$(EXEEXT)
-	$(LINK) $(expand_2d_OBJECTS) $(expand_2d_LDADD) $(LIBS)
+convert_2d$(EXEEXT): $(convert_2d_OBJECTS) $(convert_2d_DEPENDENCIES) 
+	@rm -f convert_2d$(EXEEXT)
+	$(LINK) $(convert_2d_OBJECTS) $(convert_2d_LDADD) $(LIBS)
 gd_scan$(EXEEXT): $(gd_scan_OBJECTS) $(gd_scan_DEPENDENCIES) 
 	@rm -f gd_scan$(EXEEXT)
 	$(LINK) $(gd_scan_OBJECTS) $(gd_scan_LDADD) $(LIBS)
@@ -329,7 +328,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/capture_sample.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/expand_2d.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/convert_2d.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gd_scan.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/get_parameters.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/get_timestamp.Po@am__quote@

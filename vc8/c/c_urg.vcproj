@@ -111,8 +111,8 @@
 			<File RelativePath="..\..\src\c\connection\serial_ctrl.c"></File>
 			<File RelativePath="..\..\src\c\connection\serial_utils.c"></File>
 			<File RelativePath="..\..\src\c\connection\ring_buffer.c"></File>
-			<File RelativePath="..\..\src\c\system\delay.c"></File>
-			<File RelativePath="..\..\src\c\system\ticks.c"></File>
+			<File RelativePath="..\..\src\c\system\urg_delay.c"></File>
+			<File RelativePath="..\..\src\c\system\urg_ticks.c"></File>
 			<File RelativePath="..\..\src\c\urg\urg_ctrl.c"></File>
 			<File RelativePath="..\..\src\c\urg\scip_handler.c"></File>
 			<File RelativePath="..\..\src\c\urg\urg_errno.c"></File>

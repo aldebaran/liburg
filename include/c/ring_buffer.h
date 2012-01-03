@@ -7,17 +7,17 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: ring_buffer.h 1557 2009-12-01 12:38:06Z satofumi $
+  $Id: ring_buffer.h 1811 2010-04-30 16:12:05Z satofumi $
 */
 
 
 //! リングバッファの管理情報
 typedef struct
 {
-  char *buffer;                 //!< バッファへのポインタ
-  int buffer_size;              //!< バッファサイズ
-  int first;                    //!< バッファの先頭位置
-  int last;                     //!< バッファの最終位置
+    char *buffer;                 //!< バッファへのポインタ
+    int buffer_size;              //!< バッファサイズ
+    int first;                    //!< バッファの先頭位置
+    int last;                     //!< バッファの最終位置
 } ringBuffer_t;
 
 

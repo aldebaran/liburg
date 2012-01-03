@@ -32,50 +32,50 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = viewVvSample$(EXEEXT) viewPpSample$(EXEEXT) \
-	gdCaptureSample$(EXEEXT) mdCaptureSample$(EXEEXT) \
-	viewSerialIdSample$(EXEEXT) captureIntensitySample$(EXEEXT) \
-	connectById$(EXEEXT) $(am__EXEEXT_1)
+noinst_PROGRAMS = versionLines$(EXEEXT) parameterLines$(EXEEXT) \
+	gdScan$(EXEEXT) mdScan$(EXEEXT) intensityScan$(EXEEXT) \
+	serialId$(EXEEXT) connectById$(EXEEXT) findUrgPorts$(EXEEXT) \
+	acquire_data$(EXEEXT) thread_scan$(EXEEXT)
 subdir = samples/cpp
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/ax_boost_base.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-@BOOST_COMPILE_COND_TRUE@am__EXEEXT_1 = findUrgPortsSample$(EXEEXT) \
-@BOOST_COMPILE_COND_TRUE@	urg_acquire$(EXEEXT)
 PROGRAMS = $(noinst_PROGRAMS)
-am_captureIntensitySample_OBJECTS = captureIntensitySample.$(OBJEXT)
-captureIntensitySample_OBJECTS = $(am_captureIntensitySample_OBJECTS)
-captureIntensitySample_LDADD = $(LDADD)
+am_acquire_data_OBJECTS = acquire_data.$(OBJEXT)
+acquire_data_OBJECTS = $(am_acquire_data_OBJECTS)
+acquire_data_LDADD = $(LDADD)
 am_connectById_OBJECTS = connectById.$(OBJEXT)
 connectById_OBJECTS = $(am_connectById_OBJECTS)
 connectById_LDADD = $(LDADD)
-am_findUrgPortsSample_OBJECTS = findUrgPortsSample.$(OBJEXT)
-findUrgPortsSample_OBJECTS = $(am_findUrgPortsSample_OBJECTS)
-findUrgPortsSample_LDADD = $(LDADD)
-am_gdCaptureSample_OBJECTS = gdCaptureSample.$(OBJEXT)
-gdCaptureSample_OBJECTS = $(am_gdCaptureSample_OBJECTS)
-gdCaptureSample_LDADD = $(LDADD)
-am_mdCaptureSample_OBJECTS = mdCaptureSample.$(OBJEXT)
-mdCaptureSample_OBJECTS = $(am_mdCaptureSample_OBJECTS)
-mdCaptureSample_LDADD = $(LDADD)
-am_urg_acquire_OBJECTS = urg_acquire.$(OBJEXT)
-urg_acquire_OBJECTS = $(am_urg_acquire_OBJECTS)
-urg_acquire_LDADD = $(LDADD)
-am_viewPpSample_OBJECTS = viewPpSample.$(OBJEXT)
-viewPpSample_OBJECTS = $(am_viewPpSample_OBJECTS)
-viewPpSample_LDADD = $(LDADD)
-am_viewSerialIdSample_OBJECTS = viewSerialIdSample.$(OBJEXT)
-viewSerialIdSample_OBJECTS = $(am_viewSerialIdSample_OBJECTS)
-viewSerialIdSample_LDADD = $(LDADD)
-am_viewVvSample_OBJECTS = viewVvSample.$(OBJEXT)
-viewVvSample_OBJECTS = $(am_viewVvSample_OBJECTS)
-viewVvSample_LDADD = $(LDADD)
+am_findUrgPorts_OBJECTS = findUrgPorts.$(OBJEXT)
+findUrgPorts_OBJECTS = $(am_findUrgPorts_OBJECTS)
+findUrgPorts_LDADD = $(LDADD)
+am_gdScan_OBJECTS = gdScan.$(OBJEXT)
+gdScan_OBJECTS = $(am_gdScan_OBJECTS)
+gdScan_LDADD = $(LDADD)
+am_intensityScan_OBJECTS = intensityScan.$(OBJEXT)
+intensityScan_OBJECTS = $(am_intensityScan_OBJECTS)
+intensityScan_LDADD = $(LDADD)
+am_mdScan_OBJECTS = mdScan.$(OBJEXT)
+mdScan_OBJECTS = $(am_mdScan_OBJECTS)
+mdScan_LDADD = $(LDADD)
+am_parameterLines_OBJECTS = parameterLines.$(OBJEXT)
+parameterLines_OBJECTS = $(am_parameterLines_OBJECTS)
+parameterLines_LDADD = $(LDADD)
+am_serialId_OBJECTS = serialId.$(OBJEXT)
+serialId_OBJECTS = $(am_serialId_OBJECTS)
+serialId_LDADD = $(LDADD)
+am_thread_scan_OBJECTS = thread_scan.$(OBJEXT)
+thread_scan_OBJECTS = $(am_thread_scan_OBJECTS)
+thread_scan_LDADD = $(LDADD)
+am_versionLines_OBJECTS = versionLines.$(OBJEXT)
+versionLines_OBJECTS = $(am_versionLines_OBJECTS)
+versionLines_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -88,16 +88,16 @@ CXXLD = $(CXX)
 CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(captureIntensitySample_SOURCES) $(connectById_SOURCES) \
-	$(findUrgPortsSample_SOURCES) $(gdCaptureSample_SOURCES) \
-	$(mdCaptureSample_SOURCES) $(urg_acquire_SOURCES) \
-	$(viewPpSample_SOURCES) $(viewSerialIdSample_SOURCES) \
-	$(viewVvSample_SOURCES)
-DIST_SOURCES = $(captureIntensitySample_SOURCES) \
-	$(connectById_SOURCES) $(findUrgPortsSample_SOURCES) \
-	$(gdCaptureSample_SOURCES) $(mdCaptureSample_SOURCES) \
-	$(urg_acquire_SOURCES) $(viewPpSample_SOURCES) \
-	$(viewSerialIdSample_SOURCES) $(viewVvSample_SOURCES)
+SOURCES = $(acquire_data_SOURCES) $(connectById_SOURCES) \
+	$(findUrgPorts_SOURCES) $(gdScan_SOURCES) \
+	$(intensityScan_SOURCES) $(mdScan_SOURCES) \
+	$(parameterLines_SOURCES) $(serialId_SOURCES) \
+	$(thread_scan_SOURCES) $(versionLines_SOURCES)
+DIST_SOURCES = $(acquire_data_SOURCES) $(connectById_SOURCES) \
+	$(findUrgPorts_SOURCES) $(gdScan_SOURCES) \
+	$(intensityScan_SOURCES) $(mdScan_SOURCES) \
+	$(parameterLines_SOURCES) $(serialId_SOURCES) \
+	$(thread_scan_SOURCES) $(versionLines_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -108,8 +108,6 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
-BOOST_CPPFLAGS = @BOOST_CPPFLAGS@
-BOOST_LDFLAGS = @BOOST_LDFLAGS@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -125,6 +123,7 @@ C_INCLUDES = @C_INCLUDES@
 C_INSTALL_LIBS = @C_INSTALL_LIBS@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -149,6 +148,7 @@ LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
+MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
 NM = @NM@
 NMEDIT = @NMEDIT@
@@ -177,6 +177,7 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
@@ -210,7 +211,6 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
-lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -225,31 +225,30 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@BOOST_COMPILE_COND_TRUE@BOOST_DEPEND_FILES = findUrgPortsSample urg_acquire
 INCLUDES = $(CPP_INCLUDES)
-viewVvSample_SOURCES = viewVvSample.cpp
-viewPpSample_SOURCES = viewPpSample.cpp
-gdCaptureSample_SOURCES = gdCaptureSample.cpp
-mdCaptureSample_SOURCES = mdCaptureSample.cpp
-findUrgPortsSample_SOURCES = findUrgPortsSample.cpp
-viewSerialIdSample_SOURCES = viewSerialIdSample.cpp
-urg_acquire_SOURCES = urg_acquire.cpp
-captureIntensitySample_SOURCES = captureIntensitySample.cpp
+versionLines_SOURCES = versionLines.cpp
+parameterLines_SOURCES = parameterLines.cpp
+gdScan_SOURCES = gdScan.cpp
+mdScan_SOURCES = mdScan.cpp
+intensityScan_SOURCES = intensityScan.cpp
+serialId_SOURCES = serialId.cpp
 connectById_SOURCES = connectById.cpp
+findUrgPorts_SOURCES = findUrgPorts.cpp
+acquire_data_SOURCES = acquire_data.cpp
+thread_scan_SOURCES = thread_scan.cpp
 AM_CXXFLAGS = $(SDL_CFLAGS)
 EXTRA_DIST = \
-	findUrgPortsSample.cpp \
-	urg_acquire.cpp \
 	samples_cpp.sln \
-	viewVvSample_vc8/viewVvSample.vcproj \
-	viewPpSample_vc8/viewPpSample.vcproj \
-	gdCaptureSample_vc8/gdCaptureSample.vcproj \
-	mdCaptureSample_vc8/mdCaptureSample.vcproj \
-	findUrgPortsSample_vc8/findUrgPortsSample.vcproj \
-	viewSerialIdSample_vc8/viewSerialIdSample.vcproj \
-	urg_acquire_vc8/urg_acquire.vcproj \
-	captureIntensitySample_vc8/captureIntensitySample.vcproj \
-	connectById_vc8/connectById.vcproj
+	versionLines_vc8/versionLines.vcproj \
+	parameterLines_vc8/parameterLines.vcproj \
+	gdScan_vc8/gdScan.vcproj \
+	mdScan_vc8/mdScan.vcproj \
+	intensityScan_vc8/intensityScan.vcproj \
+	serialId_vc8/serialId.vcproj \
+	connectById_vc8/connectById.vcproj \
+	findUrgPorts_vc8/findUrgPorts.vcproj \
+	acquire_data_vc8/acquire_data.vcproj \
+	thread_scan_vc8/thread_scan.vcproj
 
 all: all-am
 
@@ -291,33 +290,36 @@ clean-noinstPROGRAMS:
 	  echo " rm -f $$p $$f"; \
 	  rm -f $$p $$f ; \
 	done
-captureIntensitySample$(EXEEXT): $(captureIntensitySample_OBJECTS) $(captureIntensitySample_DEPENDENCIES) 
-	@rm -f captureIntensitySample$(EXEEXT)
-	$(CXXLINK) $(captureIntensitySample_OBJECTS) $(captureIntensitySample_LDADD) $(LIBS)
+acquire_data$(EXEEXT): $(acquire_data_OBJECTS) $(acquire_data_DEPENDENCIES) 
+	@rm -f acquire_data$(EXEEXT)
+	$(CXXLINK) $(acquire_data_OBJECTS) $(acquire_data_LDADD) $(LIBS)
 connectById$(EXEEXT): $(connectById_OBJECTS) $(connectById_DEPENDENCIES) 
 	@rm -f connectById$(EXEEXT)
 	$(CXXLINK) $(connectById_OBJECTS) $(connectById_LDADD) $(LIBS)
-findUrgPortsSample$(EXEEXT): $(findUrgPortsSample_OBJECTS) $(findUrgPortsSample_DEPENDENCIES) 
-	@rm -f findUrgPortsSample$(EXEEXT)
-	$(CXXLINK) $(findUrgPortsSample_OBJECTS) $(findUrgPortsSample_LDADD) $(LIBS)
-gdCaptureSample$(EXEEXT): $(gdCaptureSample_OBJECTS) $(gdCaptureSample_DEPENDENCIES) 
-	@rm -f gdCaptureSample$(EXEEXT)
-	$(CXXLINK) $(gdCaptureSample_OBJECTS) $(gdCaptureSample_LDADD) $(LIBS)
-mdCaptureSample$(EXEEXT): $(mdCaptureSample_OBJECTS) $(mdCaptureSample_DEPENDENCIES) 
-	@rm -f mdCaptureSample$(EXEEXT)
-	$(CXXLINK) $(mdCaptureSample_OBJECTS) $(mdCaptureSample_LDADD) $(LIBS)
-urg_acquire$(EXEEXT): $(urg_acquire_OBJECTS) $(urg_acquire_DEPENDENCIES) 
-	@rm -f urg_acquire$(EXEEXT)
-	$(CXXLINK) $(urg_acquire_OBJECTS) $(urg_acquire_LDADD) $(LIBS)
-viewPpSample$(EXEEXT): $(viewPpSample_OBJECTS) $(viewPpSample_DEPENDENCIES) 
-	@rm -f viewPpSample$(EXEEXT)
-	$(CXXLINK) $(viewPpSample_OBJECTS) $(viewPpSample_LDADD) $(LIBS)
-viewSerialIdSample$(EXEEXT): $(viewSerialIdSample_OBJECTS) $(viewSerialIdSample_DEPENDENCIES) 
-	@rm -f viewSerialIdSample$(EXEEXT)
-	$(CXXLINK) $(viewSerialIdSample_OBJECTS) $(viewSerialIdSample_LDADD) $(LIBS)
-viewVvSample$(EXEEXT): $(viewVvSample_OBJECTS) $(viewVvSample_DEPENDENCIES) 
-	@rm -f viewVvSample$(EXEEXT)
-	$(CXXLINK) $(viewVvSample_OBJECTS) $(viewVvSample_LDADD) $(LIBS)
+findUrgPorts$(EXEEXT): $(findUrgPorts_OBJECTS) $(findUrgPorts_DEPENDENCIES) 
+	@rm -f findUrgPorts$(EXEEXT)
+	$(CXXLINK) $(findUrgPorts_OBJECTS) $(findUrgPorts_LDADD) $(LIBS)
+gdScan$(EXEEXT): $(gdScan_OBJECTS) $(gdScan_DEPENDENCIES) 
+	@rm -f gdScan$(EXEEXT)
+	$(CXXLINK) $(gdScan_OBJECTS) $(gdScan_LDADD) $(LIBS)
+intensityScan$(EXEEXT): $(intensityScan_OBJECTS) $(intensityScan_DEPENDENCIES) 
+	@rm -f intensityScan$(EXEEXT)
+	$(CXXLINK) $(intensityScan_OBJECTS) $(intensityScan_LDADD) $(LIBS)
+mdScan$(EXEEXT): $(mdScan_OBJECTS) $(mdScan_DEPENDENCIES) 
+	@rm -f mdScan$(EXEEXT)
+	$(CXXLINK) $(mdScan_OBJECTS) $(mdScan_LDADD) $(LIBS)
+parameterLines$(EXEEXT): $(parameterLines_OBJECTS) $(parameterLines_DEPENDENCIES) 
+	@rm -f parameterLines$(EXEEXT)
+	$(CXXLINK) $(parameterLines_OBJECTS) $(parameterLines_LDADD) $(LIBS)
+serialId$(EXEEXT): $(serialId_OBJECTS) $(serialId_DEPENDENCIES) 
+	@rm -f serialId$(EXEEXT)
+	$(CXXLINK) $(serialId_OBJECTS) $(serialId_LDADD) $(LIBS)
+thread_scan$(EXEEXT): $(thread_scan_OBJECTS) $(thread_scan_DEPENDENCIES) 
+	@rm -f thread_scan$(EXEEXT)
+	$(CXXLINK) $(thread_scan_OBJECTS) $(thread_scan_LDADD) $(LIBS)
+versionLines$(EXEEXT): $(versionLines_OBJECTS) $(versionLines_DEPENDENCIES) 
+	@rm -f versionLines$(EXEEXT)
+	$(CXXLINK) $(versionLines_OBJECTS) $(versionLines_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -325,15 +327,16 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/captureIntensitySample.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/acquire_data.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/connectById.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/findUrgPortsSample.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdCaptureSample.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mdCaptureSample.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/urg_acquire.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/viewPpSample.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/viewSerialIdSample.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/viewVvSample.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/findUrgPorts.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdScan.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/intensityScan.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mdScan.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/parameterLines.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/serialId.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/thread_scan.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/versionLines.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

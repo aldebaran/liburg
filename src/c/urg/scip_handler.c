@@ -4,7 +4,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: scip_handler.c 1714 2010-02-21 20:53:28Z satofumi $
+  $Id: scip_handler.c 1846 2010-06-13 23:26:56Z satofumi $
 
   \todo Check the checksum of acquired line
   \todo Add an argument to distinguish the line that contain version information.
@@ -24,10 +24,11 @@
 #define snprintf _snprintf
 #endif
 
-extern int snprintf(char *, size_t, const char *, ...);
+// error in xcode 3.2.2
+//extern int snprintf(char *, size_t, const char *, ...);
 
 
-/*! \todo Standardize with  urg_ctrl.c */
+/*! \todo Standardize with urg_ctrl.c */
 enum {
   ScipTimeout = 1000,           /*!< [msec] */
   EachTimeout = 100,		/*!< [msec] */

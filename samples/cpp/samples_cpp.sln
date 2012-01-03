@@ -1,49 +1,98 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "viewVvSample", "viewVvSample_vc8\viewVvSample.vcproj", "{B1A12462-87A9-4522-BF03-972F7FCD1699}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "viewSerialIdSample", "viewSerialIdSample_vc8\viewSerialIdSample.vcproj", "{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "viewPpSample", "viewPpSample_vc8\viewPpSample.vcproj", "{6AD5DF29-813F-4A14-919A-365FA8A28FCB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "findUrgPortsSample", "findUrgPortsSample_vc8\findUrgPortsSample.vcproj", "{0337762C-18F3-4474-9570-CC032FD5F018}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gdCaptureSample", "gdCaptureSample_vc8\gdCaptureSample.vcproj", "{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "urg_acquire", "urg_acquire_vc8\urg_acquire.vcproj", "{5A118B2F-84BD-4F12-B3FE-696D65795EA6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mdCaptureSample", "mdCaptureSample_vc8\mdCaptureSample.vcproj", "{D847ABD5-75CE-457B-8E63-941D19B808E6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "urg", "..\..\vc8\cpp\urg.vcproj", "{E35DE899-8736-4A8E-A604-821469165AF1}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "connectById", "connectById_vc8\connectById.vcproj", "{6D235406-208D-4C8B-89EA-3547ACD97F56}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 	ProjectSection(ProjectDependencies) = postProject
 		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "captureIntensitySample", "captureIntensitySample_vc8\captureIntensitySample.vcproj", "{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "acquire_data", "acquire_data_vc8\acquire_data.vcproj", "{5A118B2F-84BD-4F12-B3FE-696D65795EA6}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "findUrgPorts", "findUrgPorts_vc8\findUrgPorts.vcproj", "{0337762C-18F3-4474-9570-CC032FD5F018}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gdScan", "gdScan_vc8\gdScan.vcproj", "{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "intensityScan", "intensityScan_vc8\intensityScan.vcproj", "{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mdScan", "mdScan_vc8\mdScan.vcproj", "{D847ABD5-75CE-457B-8E63-941D19B808E6}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "parameterLines", "parameterLines_vc8\parameterLines.vcproj", "{6AD5DF29-813F-4A14-919A-365FA8A28FCB}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "serialId", "serialId_vc8\serialId.vcproj", "{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "thread_scan", "thread_scan_vc8\thread_scan.vcproj", "{2377D520-C588-4A75-881D-63DC2BE96EAC}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "versionLines", "versionLines_vc8\versionLines.vcproj", "{B1A12462-87A9-4522-BF03-972F7FCD1699}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 	ProjectSection(ProjectDependencies) = postProject
 		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
 	EndProjectSection
@@ -54,34 +103,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Debug|Win32.ActiveCfg = Debug|Win32
-		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Debug|Win32.Build.0 = Debug|Win32
-		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Release|Win32.ActiveCfg = Release|Win32
-		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Release|Win32.Build.0 = Release|Win32
-		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Debug|Win32.ActiveCfg = Debug|Win32
-		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Debug|Win32.Build.0 = Debug|Win32
-		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Release|Win32.ActiveCfg = Release|Win32
-		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Release|Win32.Build.0 = Release|Win32
-		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Debug|Win32.ActiveCfg = Debug|Win32
-		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Debug|Win32.Build.0 = Debug|Win32
-		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Release|Win32.ActiveCfg = Release|Win32
-		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Release|Win32.Build.0 = Release|Win32
-		{0337762C-18F3-4474-9570-CC032FD5F018}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0337762C-18F3-4474-9570-CC032FD5F018}.Debug|Win32.Build.0 = Debug|Win32
-		{0337762C-18F3-4474-9570-CC032FD5F018}.Release|Win32.ActiveCfg = Release|Win32
-		{0337762C-18F3-4474-9570-CC032FD5F018}.Release|Win32.Build.0 = Release|Win32
-		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Debug|Win32.Build.0 = Debug|Win32
-		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Release|Win32.ActiveCfg = Release|Win32
-		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Release|Win32.Build.0 = Release|Win32
-		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Debug|Win32.ActiveCfg = Debug|Win32
-		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Debug|Win32.Build.0 = Debug|Win32
-		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Release|Win32.ActiveCfg = Release|Win32
-		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Release|Win32.Build.0 = Release|Win32
-		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Debug|Win32.Build.0 = Debug|Win32
-		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Release|Win32.ActiveCfg = Release|Win32
-		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Release|Win32.Build.0 = Release|Win32
 		{E35DE899-8736-4A8E-A604-821469165AF1}.Debug|Win32.ActiveCfg = Debug|Win32
 		{E35DE899-8736-4A8E-A604-821469165AF1}.Debug|Win32.Build.0 = Debug|Win32
 		{E35DE899-8736-4A8E-A604-821469165AF1}.Release|Win32.ActiveCfg = Release|Win32
@@ -90,10 +111,42 @@ Global
 		{6D235406-208D-4C8B-89EA-3547ACD97F56}.Debug|Win32.Build.0 = Debug|Win32
 		{6D235406-208D-4C8B-89EA-3547ACD97F56}.Release|Win32.ActiveCfg = Release|Win32
 		{6D235406-208D-4C8B-89EA-3547ACD97F56}.Release|Win32.Build.0 = Release|Win32
+		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Debug|Win32.Build.0 = Debug|Win32
+		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Release|Win32.ActiveCfg = Release|Win32
+		{5A118B2F-84BD-4F12-B3FE-696D65795EA6}.Release|Win32.Build.0 = Release|Win32
+		{0337762C-18F3-4474-9570-CC032FD5F018}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0337762C-18F3-4474-9570-CC032FD5F018}.Debug|Win32.Build.0 = Debug|Win32
+		{0337762C-18F3-4474-9570-CC032FD5F018}.Release|Win32.ActiveCfg = Release|Win32
+		{0337762C-18F3-4474-9570-CC032FD5F018}.Release|Win32.Build.0 = Release|Win32
+		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Debug|Win32.Build.0 = Debug|Win32
+		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Release|Win32.ActiveCfg = Release|Win32
+		{91FD5F6A-E5EB-4CC9-8DFA-FAE92194E2D1}.Release|Win32.Build.0 = Release|Win32
 		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Debug|Win32.ActiveCfg = Debug|Win32
 		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Debug|Win32.Build.0 = Debug|Win32
 		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Release|Win32.ActiveCfg = Release|Win32
 		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Release|Win32.Build.0 = Release|Win32
+		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Debug|Win32.Build.0 = Debug|Win32
+		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Release|Win32.ActiveCfg = Release|Win32
+		{D847ABD5-75CE-457B-8E63-941D19B808E6}.Release|Win32.Build.0 = Release|Win32
+		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Debug|Win32.Build.0 = Debug|Win32
+		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Release|Win32.ActiveCfg = Release|Win32
+		{6AD5DF29-813F-4A14-919A-365FA8A28FCB}.Release|Win32.Build.0 = Release|Win32
+		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Debug|Win32.Build.0 = Debug|Win32
+		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Release|Win32.ActiveCfg = Release|Win32
+		{7C3333D4-13B0-4C49-93A1-8AA6D89F8B62}.Release|Win32.Build.0 = Release|Win32
+		{2377D520-C588-4A75-881D-63DC2BE96EAC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2377D520-C588-4A75-881D-63DC2BE96EAC}.Debug|Win32.Build.0 = Debug|Win32
+		{2377D520-C588-4A75-881D-63DC2BE96EAC}.Release|Win32.ActiveCfg = Release|Win32
+		{2377D520-C588-4A75-881D-63DC2BE96EAC}.Release|Win32.Build.0 = Release|Win32
+		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Debug|Win32.Build.0 = Debug|Win32
+		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Release|Win32.ActiveCfg = Release|Win32
+		{B1A12462-87A9-4522-BF03-972F7FCD1699}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

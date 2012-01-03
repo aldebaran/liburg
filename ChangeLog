@@ -1,3 +1,27 @@
+2011-11-05	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed capture function's timestamp bug.
+
+2011-10-28	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* added UrgDevice.h.
+	* 0.8.14 released.
+
+2011-07-13	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed added UrgDevice.h.
+	* 0.8.13 released.
+
+2011-05-10	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed size_t errors.
+	* 0.8.12 released.
+
+2010-06-14	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* UrgCtrl class was renamed UrgDevice.
+
+2010-02-25	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* urg_initialize() is added to all C samples.
+
+2010-02-25	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* 0.8.11 released.
+
 2010-02-19	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
 	* Changed invalid range data from -1 to 0.
 	* Fixed to missing last index data in C++ implementation.
@@ -30,7 +54,7 @@
 	* 0.8.6 released.
 
 2010-01-07	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
-	* Fixed to build C++ library without Boot library on Windows.
+	* Fixed to build C++ library without Boost library on Windows.
 	* 0.8.5 released.
 
 2009-12-01	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
@@ -193,8 +217,7 @@
 	* c_urg-config added.
 
 2008-09-02	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
-	* Function name ScipHandler::decode() changed to
-      ScipHandler::encode()
+	* Function name ScipHandler::decode() changed to ScipHandler::encode()
 
 2008-09-01	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
 	* 0.0.5 released.

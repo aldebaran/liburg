@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: get_timestamp.c 1683 2010-02-10 10:28:05Z satofumi $
+  $Id: get_timestamp.c 1724 2010-02-25 10:43:11Z satofumi $
 */
 
 #include "urg_ctrl.h"
@@ -43,9 +43,10 @@ int main(int argc, char *argv[])
   long timestamp = 0;
   int ret = 0;
   int i;
+  urg_t urg;
 
   /* Connection */
-  urg_t urg;
+  urg_initialize(&urg);
   ret = urg_connect(&urg, device, 115200);
   if (ret < 0) {
     urg_exit(&urg, "urg_connect()");

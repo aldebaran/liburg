@@ -27,4 +27,4 @@ Compiling and Running
 
 Contact
 ----------------------------------------
-Satofumi KAMIMURA <satofumi@users.sourceforge.jp>
+URG Helper Mailing List <urgwidget-users@lists.sourceforge.net>

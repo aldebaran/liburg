@@ -15,21 +15,19 @@
 
 namespace qrk
 {
-  /*!
-    \brief SDL_net ‚Ì‰Šú‰»
-  */
-  class SdlNetInit
-  {
-    SdlNetInit(const SdlNetInit& rhs);
-    SdlNetInit& operator = (const SdlNetInit& rhs);
+    //! SDL_net ‚Ì‰Šú‰»
+    class SdlNetInit
+    {
+        SdlNetInit(const SdlNetInit& rhs);
+        SdlNetInit& operator = (const SdlNetInit& rhs);
 
-    struct pImpl;
-    std::auto_ptr<pImpl> pimpl;
+        struct pImpl;
+        std::auto_ptr<pImpl> pimpl;
 
-  protected:
-    SdlNetInit(void);
-    ~SdlNetInit(void);
-  };
+    protected:
+        SdlNetInit(void);
+        ~SdlNetInit(void);
+    };
 }
 
 #endif /* !QRK_SDL_NET_INIT_H */

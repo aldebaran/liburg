@@ -37,8 +37,7 @@ subdir = src/cpp/urg
 DIST_COMMON = $(liburg_include_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/ax_boost_base.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -55,10 +54,8 @@ am__installdirs = "$(DESTDIR)$(libdir)" \
 libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 liburg_la_LIBADD =
-am__liburg_la_SOURCES_DIST = UrgCtrl.cpp ScipHandler.cpp \
-	findUrgPorts.cpp UrgUsbCom.cpp ScipHandler.h
-@BOOST_COMPILE_COND_TRUE@am__objects_1 = findUrgPorts.lo UrgUsbCom.lo
-am_liburg_la_OBJECTS = UrgCtrl.lo ScipHandler.lo $(am__objects_1)
+am_liburg_la_OBJECTS = UrgDevice.lo ScipHandler.lo findUrgPorts.lo \
+	UrgUsbCom.lo UrgCtrl.lo
 liburg_la_OBJECTS = $(am_liburg_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -82,7 +79,7 @@ LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(liburg_la_SOURCES)
-DIST_SOURCES = $(am__liburg_la_SOURCES_DIST)
+DIST_SOURCES = $(liburg_la_SOURCES)
 liburg_includeHEADERS_INSTALL = $(INSTALL_HEADER)
 HEADERS = $(liburg_include_HEADERS)
 ETAGS = etags
@@ -95,8 +92,6 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
-BOOST_CPPFLAGS = @BOOST_CPPFLAGS@
-BOOST_LDFLAGS = @BOOST_LDFLAGS@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -112,6 +107,7 @@ C_INCLUDES = @C_INCLUDES@
 C_INSTALL_LIBS = @C_INSTALL_LIBS@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -136,6 +132,7 @@ LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
+MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
 NM = @NM@
 NMEDIT = @NMEDIT@
@@ -164,6 +161,7 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
@@ -197,7 +195,6 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
-lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -212,16 +209,14 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@BOOST_COMPILE_COND_TRUE@BOOST_DEPEND_FILES = findUrgPorts.cpp UrgUsbCom.cpp
 INCLUDES = $(CPP_INCLUDES)
 lib_LTLIBRARIES = liburg.la
 liburg_includedir = $(includedir)/urg
-liburg_include_HEADERS = RangeSensor.h CaptureSettings.h RangeSensorParameter.h UrgCtrl.h RangeCaptureMode.h UrgUsbCom.h UrgUtils.h findUrgPorts.h
-liburg_la_SOURCES = UrgCtrl.cpp ScipHandler.cpp $(BOOST_DEPEND_FILES) \
+liburg_include_HEADERS = RangeSensor.h CaptureSettings.h RangeSensorParameter.h RangeCaptureMode.h UrgUsbCom.h UrgUtils.h findUrgPorts.h UrgDevice.h UrgCtrl.h
+liburg_la_SOURCES = UrgDevice.cpp ScipHandler.cpp findUrgPorts.cpp UrgUsbCom.cpp UrgCtrl.cpp \
 ScipHandler.h
 
 AM_CXXFLAGS = $(SDL_CFLAGS)
-EXTRA_DIST = $(BOOST_DEPEND_FILES)
 all: all-am
 
 .SUFFIXES:
@@ -293,6 +288,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ScipHandler.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UrgCtrl.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UrgDevice.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UrgUsbCom.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/findUrgPorts.Plo@am__quote@
 

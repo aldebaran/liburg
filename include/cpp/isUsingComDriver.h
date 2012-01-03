@@ -7,24 +7,24 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: isUsingComDriver.h 783 2009-05-05 08:56:26Z satofumi $
+  $Id: isUsingComDriver.h 1811 2010-04-30 16:12:05Z satofumi $
 */
 
 namespace qrk
 {
-  /*!
-    \brief 指定ドライバを利用している COM ポートが存在するかを返す
+    /*!
+      \brief 指定ドライバを利用している COM ポートが存在するかを返す
 
-    \param[in] com_port 判定を行う COM ポート
-    \param[in] driver_name 判定を行うドライバ名
+      \param[in] com_port 判定を行う COM ポート
+      \param[in] driver_name 判定を行うドライバ名
 
-    \retval true 指定ドライバの COM ポートが存在する
-    \retval false 存在しない
+      \retval true 指定ドライバの COM ポートが存在する
+      \retval false 存在しない
 
-    \attention Windows 環境でなければ常に false を返す
-    \attention 動作確認は、Windows XP のみ。他では未検証
-  */
-  bool isUsingComDriver(const char* com_port, const char* driver_name);
+      \attention Windows 環境でなければ常に false を返す
+      \attention 動作確認は、Windows XP のみ。他では未検証
+    */
+    bool isUsingComDriver(const char* com_port, const char* driver_name);
 }
 
 #endif /* !QRK_IS_USING_COM_DRIVER_H */

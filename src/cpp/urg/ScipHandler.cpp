@@ -4,7 +4,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: ScipHandler.cpp 1705 2010-02-19 10:33:05Z satofumi $
+  $Id: ScipHandler.cpp 1948 2011-04-19 09:59:29Z satofumi $
 */
 
 #include "ScipHandler.h"
@@ -142,7 +142,7 @@ struct ScipHandler::pImpl
         char scip20_expected_response[] = { 0, -1 };
         if (! response(return_code, "SCIP2.0\n", scip20_expected_response)) {
           error_message_ =
-            "SCIP1.1 protocol is not supported. Please update URG firmware, or reconnect after a few seconds.";
+            "SCIP1.1 protocol is not supported. Please update URG firmware, or reconnect after a few seconds because sensor is booting.";
           return false;
         }
         laser_state_ = LaserOff;
@@ -202,7 +202,7 @@ struct ScipHandler::pImpl
     snprintf(send_buffer, 10, "SS%06ld\n", baudrate);
     int return_code = -1;
     // !!! 既に設定対象のボーレート、の場合の戻り値を ss_expected... に追加する
-    char ss_expected_response[] = { 0, 0x3, 0x4, -1 };
+    char ss_expected_response[] = { 0, 0x3, 0x4, 0xf, -1 };
     if (! response(return_code, send_buffer, ss_expected_response)) {
       error_message_ = "Baudrate change fail.";
       return false;

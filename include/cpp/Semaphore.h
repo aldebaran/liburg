@@ -7,12 +7,13 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: Semaphore.h 783 2009-05-05 08:56:26Z satofumi $
+  $Id: Semaphore.h 1949 2011-05-06 07:18:01Z satofumi $
 
   ドキュメントは、SDL マニュアルを参考にしている
 */
 
 #include <memory>
+#include <cstddef>
 
 
 namespace qrk

@@ -37,8 +37,7 @@ subdir = src/cpp/monitor
 DIST_COMMON = $(liburg_monitor_include_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/ax_boost_base.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -57,8 +56,8 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 liburg_monitor_la_LIBADD =
 am_liburg_monitor_la_OBJECTS = MonitorDataHandler.lo \
 	MonitorModeManager.lo MonitorEventScheduler.lo \
-	DeviceIpManager.lo LogNameHolder.lo mConnection.lo mUrgCtrl.lo \
-	UrgServer.lo
+	DeviceIpManager.lo LogNameHolder.lo mConnection.lo \
+	mUrgDevice.lo UrgServer.lo
 liburg_monitor_la_OBJECTS = $(am_liburg_monitor_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -86,8 +85,6 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
-BOOST_CPPFLAGS = @BOOST_CPPFLAGS@
-BOOST_LDFLAGS = @BOOST_LDFLAGS@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -103,6 +100,7 @@ C_INCLUDES = @C_INCLUDES@
 C_INSTALL_LIBS = @C_INSTALL_LIBS@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -121,12 +119,13 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
-LIBS = @LIBS@ ${BOOST_FILESYSTEM_LIB}
+LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
+MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
 NM = @NM@
 NMEDIT = @NMEDIT@
@@ -155,6 +154,7 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
@@ -188,7 +188,6 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
-lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -206,8 +205,8 @@ top_srcdir = @top_srcdir@
 INCLUDES = ${CPP_INCLUDES}
 lib_LTLIBRARIES = liburg_monitor.la
 liburg_monitor_includedir = ${includedir}/urg
-liburg_monitor_include_HEADERS = MonitorDataHandler.h MonitorModeManager.h MonitorEventScheduler.h DeviceIpManager.h LogNameHolder.h mConnection.h mUrgCtrl.h UrgServer.h DeviceServer.h
-liburg_monitor_la_SOURCES = MonitorDataHandler.cpp MonitorModeManager.cpp MonitorEventScheduler.cpp DeviceIpManager.cpp LogNameHolder.cpp mConnection.cpp mUrgCtrl.cpp UrgServer.cpp
+liburg_monitor_include_HEADERS = MonitorDataHandler.h MonitorModeManager.h MonitorEventScheduler.h DeviceIpManager.h LogNameHolder.h mConnection.h mUrgDevice.h UrgServer.h DeviceServer.h
+liburg_monitor_la_SOURCES = MonitorDataHandler.cpp MonitorModeManager.cpp MonitorEventScheduler.cpp DeviceIpManager.cpp LogNameHolder.cpp mConnection.cpp mUrgDevice.cpp UrgServer.cpp
 AM_CXXFLAGS = ${SDL_CFLAGS}
 all: all-am
 
@@ -285,7 +284,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MonitorModeManager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UrgServer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mConnection.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mUrgCtrl.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mUrgDevice.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -514,6 +513,7 @@ uninstall-am: uninstall-libLTLIBRARIES \
 	uninstall-am uninstall-libLTLIBRARIES \
 	uninstall-liburg_monitor_includeHEADERS
 
+#LIBS += ${BOOST_FILESYSTEM_LIB}
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

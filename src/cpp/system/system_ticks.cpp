@@ -4,7 +4,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: system_ticks.cpp 1053 2009-06-20 22:52:51Z satofumi $
+  $Id: system_ticks.cpp 1728 2010-02-26 21:14:05Z satofumi $
 
   \todo Ä¶‘¬“x‚Ì•ÏX‚É‘Îˆ‚·‚é‚±‚Æ
 */
@@ -21,7 +21,7 @@ namespace
 }
 
 
-int qrk::system_ticks(void)
+long qrk::system_ticks(void)
 {
   // ‰Šú‰»—p
   static TicksInit sdl_init;

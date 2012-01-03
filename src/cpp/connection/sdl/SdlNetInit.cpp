@@ -16,22 +16,22 @@ using namespace qrk;
 
 struct SdlNetInit::pImpl : private SdlInit
 {
-  static bool initialized;
+    static bool initialized;
 };
 bool SdlNetInit::pImpl::initialized = false;
 
 
 SdlNetInit::SdlNetInit(void) : pimpl(new pImpl)
 {
-  if (pimpl->initialized) {
-    return;
-  }
+    if (pimpl->initialized) {
+        return;
+    }
 
-  if (SDLNet_Init() < 0) {
-    return;
-  }
-  atexit(SDLNet_Quit);
-  pimpl->initialized = true;
+    if (SDLNet_Init() < 0) {
+        return;
+    }
+    atexit(SDLNet_Quit);
+    pimpl->initialized = true;
 }
 
 

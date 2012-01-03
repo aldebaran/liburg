@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: split.h 780 2009-05-05 08:16:41Z satofumi $
+  $Id: split.h 1811 2010-04-30 16:12:05Z satofumi $
 */
 
 #include <vector>
@@ -16,19 +16,19 @@
 
 namespace qrk
 {
-  /*!
-    \brief 指定文字による分割
+    /*!
+      \brief 指定文字による分割
 
-    \param[out] tokens 分割後の文字列
-    \param[in] original 分割対象の文字列
-    \param[in] split_pattern 分割を行う文字の列
-    \param[in] continious_pattern 連続したセパレータを１つのセパレータとして扱う
+      \param[out] tokens 分割後の文字列
+      \param[in] original 分割対象の文字列
+      \param[in] split_pattern 分割を行う文字の列
+      \param[in] continious_pattern 連続したセパレータを１つのセパレータとして扱う
 
-    \return 分割後のトークン数
-  */
-  size_t split(std::vector<std::string>& tokens,
-               const std::string& original, const char* split_pattern = " \t",
-               bool continious_pattern = true);
+      \return 分割後のトークン数
+    */
+    size_t split(std::vector<std::string>& tokens,
+                 const std::string& original, const char* split_pattern = " \t",
+                 bool continious_pattern = true);
 }
 
 #endif /* !QRK_SPLIT_H */

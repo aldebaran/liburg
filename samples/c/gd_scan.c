@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: gd_scan.c 1683 2010-02-10 10:28:05Z satofumi $
+  $Id: gd_scan.c 1973 2011-11-17 02:30:20Z satofumi $
 */
 
 #include "urg_ctrl.h"
@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
 
   /* Connection */
   urg_t urg;
+  urg_initialize(&urg);
   ret = urg_connect(&urg, device, 115200);
   if (ret < 0) {
     urg_exit(&urg, "urg_connect()");

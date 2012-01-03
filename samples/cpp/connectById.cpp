@@ -5,10 +5,10 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: connectById.cpp 1683 2010-02-10 10:28:05Z satofumi $
+  $Id: connectById.cpp 1737 2010-03-06 07:15:19Z satofumi $
 */
 
-#include "UrgCtrl.h"
+#include "UrgDevice.h"
 #include "UrgUtils.h"
 #include "Connection.h"
 #include "ConnectionUtils.h"
@@ -20,12 +20,12 @@ using namespace std;
 
 namespace
 {
-  bool adjustById(UrgCtrl urg[], long serials[], size_t n)
+  bool adjustById(UrgDevice urg[], long serials[], size_t n)
   {
     // Get serial ID
     vector<long> device_serials;
     for (size_t i = 0; i < n; ++i) {
-      long serial_id = urgSerialId<UrgCtrl>(&urg[i]);
+      long serial_id = urgSerialId<UrgDevice>(&urg[i]);
       device_serials.push_back(serial_id);
     }
 
@@ -43,7 +43,7 @@ namespace
       }
       size_t swap_index = p - device_serials.begin();
 
-      swapConnection<UrgCtrl>(urg[i], urg[swap_index]);
+      swapConnection<UrgDevice>(urg[i], urg[swap_index]);
       swap(device_serials[i], device_serials[swap_index]);
     }
 
@@ -65,13 +65,13 @@ int main(int argc, char *argv[])
   const char* devices[] = { "/dev/ttyACM0", "/dev/ttyACM1" };
 #endif
 
-  UrgCtrl urg[2];
+  UrgDevice urg[2];
 
   // Connection
   size_t n = sizeof(serials) / sizeof(serials[0]);
   for (size_t i = 0; i < n; ++i) {
     if (! urg[i].connect(devices[i])) {
-      cout << "UrgCtrl::connect: " << urg[i].what() << endl;
+      cout << "UrgDevice::connect: " << urg[i].what() << endl;
       exit(1);
     }
   }
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
   // Display
   cout << "result" << endl;
   for (size_t i = 0; i < n; ++i) {
-    cout << i << ", " << urgSerialId<UrgCtrl>(&urg[i]) << endl;
+    cout << i << ", " << urgSerialId<UrgDevice>(&urg[i]) << endl;
   }
 
   for (size_t i = 0; i < n; ++i) {

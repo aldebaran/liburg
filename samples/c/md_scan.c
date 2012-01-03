@@ -7,11 +7,10 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: md_scan.c 1684 2010-02-10 23:56:38Z satofumi $
+  $Id: md_scan.c 1967 2011-10-14 06:29:53Z satofumi $
 */
 
 #include "urg_ctrl.h"
-#include "delay.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -47,14 +46,15 @@ int main(int argc, char *argv[])
   int timestamp = -1;
   int previous_timestamp;
   int remain_times;
-  int scan_msec;
+  //int scan_msec;
   urg_parameter_t parameter;
   int ret;
   int n;
   int i;
+  urg_t urg;
 
   /* Connection */
-  urg_t urg;
+  urg_initialize(&urg);
   ret = urg_connect(&urg, device, 115200);
   if (ret < 0) {
     urg_exit(&urg, "urg_connect()");
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     exit(1);
   }
   urg_parameters(&urg, &parameter);
-  scan_msec = urg_scanMsec(&urg);
+  //scan_msec = urg_scanMsec(&urg);
 
   /* Request for MD data */
   /* To get data continuously for more than 100 times, set capture times equal

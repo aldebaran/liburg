@@ -7,7 +7,7 @@
 
   \author Satofumi KAMIMURA
 
-  $Id: FindComPorts.h 1576 2009-12-15 00:40:56Z satofumi $
+  $Id: FindComPorts.h 1811 2010-04-30 16:12:05Z satofumi $
 
   \attention 動作確認は Windows XP のみ。他では未検証
 */
@@ -19,66 +19,66 @@
 
 namespace qrk
 {
-  /*!
-    \brief シリアルポートの探索を行う
-
-    Windows では、レジストリ情報を元に COM 一覧を取得して返す。\n
-    Linux, MacOS では、与えられたパターンに一致するファイル名を取得して返す。
-  */
-  class FindComPorts
-  {
-  public:
-    FindComPorts(void);
-    ~FindComPorts(void);
-
-
     /*!
-      \brief 登録済みのベース名のクリア
+      \brief シリアルポートの探索を行う
+
+      Windows では、レジストリ情報を元に COM 一覧を取得して返す。\n
+      Linux, MacOS では、与えられたパターンに一致するファイル名を取得して返す。
     */
-    void clearBaseNames(void);
+    class FindComPorts
+    {
+    public:
+        FindComPorts(void);
+        ~FindComPorts(void);
 
 
-    /*!
-      \brief 探索で用いるポートのベース名を追加する
-
-      \param[in] base_name ポートのベース名
-    */
-    void addBaseName(const char* base_name);
+        /*!
+          \brief 登録済みのベース名のクリア
+        */
+        void clearBaseNames(void);
 
 
-    /*!
-      \brief 登録済みのポートのベース名を返す
+        /*!
+          \brief 探索で用いるポートのベース名を追加する
 
-      Linux 実装で用いる
-
-      \return ポートのベース名
-    */
-    std::vector<std::string> baseNames(void);
+          \param[in] base_name ポートのベース名
+        */
+        void addBaseName(const char* base_name);
 
 
-    void addDriverName(const char* driver_name);
+        /*!
+          \brief 登録済みのポートのベース名を返す
+
+          Linux 実装で用いる
+
+          \return ポートのベース名
+        */
+        std::vector<std::string> baseNames(void);
 
 
-    /*!
-      \brief COM ポート一覧の取得
+        void addDriverName(const char* driver_name);
 
-      \param[out] ports 検出したポート
-      \param[in] all_ports addDriverName() で指定したポートのみ取得するとき false
 
-      \retval COM 一覧が格納された string 配列
-    */
-    size_t find(std::vector<std::string>& ports, bool all_ports = true);
+        /*!
+          \brief COM ポート一覧の取得
 
-    size_t find(std::vector<std::string>& ports,
-                std::vector<std::string>& driver_names, bool all_ports = true);
+          \param[out] ports 検出したポート
+          \param[in] all_ports addDriverName() で指定したポートのみ取得するとき false
 
-  private:
-    FindComPorts(const FindComPorts& rhs);
-    FindComPorts& operator = (const FindComPorts& rhs);
+          \retval COM 一覧が格納された string 配列
+        */
+        size_t find(std::vector<std::string>& ports, bool all_ports = true);
 
-    struct pImpl;
-    std::auto_ptr<pImpl> pimpl;
-  };
+        size_t find(std::vector<std::string>& ports,
+                    std::vector<std::string>& driver_names, bool all_ports = true);
+
+    private:
+        FindComPorts(const FindComPorts& rhs);
+        FindComPorts& operator = (const FindComPorts& rhs);
+
+        struct pImpl;
+        std::auto_ptr<pImpl> pimpl;
+    };
 }
 
 #endif /* !QRK_FIND_COM_PORTS_H */
