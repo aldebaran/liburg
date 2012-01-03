@@ -137,6 +137,10 @@ public:
             baudrate_value = B115200;
             break;
 
+        case 500000:
+            baudrate_value = B500000;
+            break;
+
         default:
             sprintf(error_message, "No handle baudrate value: %ld", baudrate);
             error_message_ = string(error_message);

@@ -43,7 +43,7 @@ void urg_initialize(urg_t *urg)
 
 static int urg_firstConnection(urg_t *urg, long baudrate)
 {
-  long try_baudrates[] = { 115200, 19200, 38400 };
+  long try_baudrates[] = { 500000, 115200, 19200, 38400 };
   int try_size = sizeof(try_baudrates) / sizeof(try_baudrates[0]);
   long pre_ticks;
   int reply = 0;

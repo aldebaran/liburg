@@ -132,6 +132,10 @@ int serial_setBaudrate(serial_t *serial, long baudrate)
     baudrate_value = B115200;
     break;
 
+  case 500000:
+    baudrate_value = B500000;
+    break;
+
   default:
     return SerialSetBaudrateFail;
   }
