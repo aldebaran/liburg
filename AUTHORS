@@ -1,0 +1,6 @@
+Satofumi KAMIMURA was original author.
+
+Tim Niemueller made a 64 bit Linux (Fedora) package and proposed
+several improvements with patches to fit recent GCC and 64bit
+environment.  The name of the installed library was changed by his proposal.
+(urg/system.so -> urg_system.so)

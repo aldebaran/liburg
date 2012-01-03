@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "urg", "..\..\vc8\cpp\urg.vcproj", "{E35DE899-8736-4A8E-A604-821469165AF1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "captureIntensitySample", "captureIntensitySample_vc8\captureIntensitySample.vcproj", "{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E35DE899-8736-4A8E-A604-821469165AF1} = {E35DE899-8736-4A8E-A604-821469165AF1}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E35DE899-8736-4A8E-A604-821469165AF1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E35DE899-8736-4A8E-A604-821469165AF1}.Debug|Win32.Build.0 = Debug|Win32
+		{E35DE899-8736-4A8E-A604-821469165AF1}.Release|Win32.ActiveCfg = Release|Win32
+		{E35DE899-8736-4A8E-A604-821469165AF1}.Release|Win32.Build.0 = Release|Win32
+		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Debug|Win32.Build.0 = Debug|Win32
+		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Release|Win32.ActiveCfg = Release|Win32
+		{D5C8C132-2986-42AA-82A7-4CD2A4E9AE75}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

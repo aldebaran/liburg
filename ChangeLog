@@ -1,0 +1,224 @@
+2010-02-19	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Changed invalid range data from -1 to 0.
+	* Fixed to missing last index data in C++ implementation.
+
+2010-02-19	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* 0.8.10 released.
+
+2010-02-16	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed to reduce receive data in c/urg_ctrl.c
+
+2010-02-16	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Adjusted to be able to compile scip_samples if without SDL.
+
+2010-02-04	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed to compile with Visual Studio 2005.
+	* 0.8.9 released.
+
+2010-02-03	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed invalid timestamp after error packet received.
+	* Fixed wrong message returned by urg_strerror().
+	* Fixed to recover after the motor rotation error.
+	* 0.8.8 released.
+
+2010-01-30	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Tim Niemueller's proposal for adding m4 scripts.
+	* 0.8.7 released.
+
+2010-01-18	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Tim Niemueller's proposal for 64 bit Linux included.
+	* 0.8.6 released.
+
+2010-01-07	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed to build C++ library without Boot library on Windows.
+	* 0.8.5 released.
+
+2009-12-01	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Using ring buffer for serial communication library.
+	* 0.8.4 released.
+
+2009-11-18	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed samples/cpp/captureIntensitySample.cpp
+
+2009-11-13	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* 0.8.3 released.
+
+2009-10-29	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* samples/cpp_ethernet added.
+
+2009-10-26	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Serial speed performance improved. SerrialCtrl.cpp, RingBuffer.h
+	* 0.8.2 released.
+
+2009-10-21	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed Macintosh cpp sample to work.
+
+2009-10-07	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed broken link of winmm.lib
+	* 0.8.1 released.
+
+2009-09-30	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Added vc6 project file.
+	* New implementation of serial communication.
+	* Fixed to turn on LASER when GD command issued.
+	* Fixed buffer underflow bug in c/urg_ctrl.c
+	* 0.8.0 released.
+
+2009-07-30	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* include/ folder added.
+	* Adjusted vcproj for Code Blocks.
+
+2009-07-16	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Renamed src/cpp/connection/TcpDevice.cpp to TcpSocket.cpp
+
+2009-07-04	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Renamed src/cpp/system/getTicks.cpp to ticks.cpp
+	* License changed to LGPL.
+	* 0.7.8 released.
+
+2009-06-13	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Renamed src/cpp/connection/SerialCtrl.cpp to SerialDevice.cpp
+	* Fixed error processing problem in non URG device connection.
+	* 0.7.7 released.
+
+2009-06-09	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed wrong calculation when using multiple URG device in urg_ctrl.c
+
+2009-06-01	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* samples/cpp/connectById.cpp added.
+	* 0.7.6 released.
+
+2009-05-31	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed unappropriate action of grouping in ME command.
+	* UrgCtrl::setRetryTimes() added to specify limit of retrying.
+	* 0.7.5 released.
+
+2009-04-19	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Partial implementation of ME data acquiring in urg_ctrl.c
+	* 0.7.4 released.
+
+2009-04-18	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* SdlNetInit.cpp added.
+
+2009-03-17	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Improved serial communication performance on Windows.
+
+2009-02-04	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Implemented URG port detection on Macintosh. FindComPorts.cpp
+	* Added ignoring error packet.
+	* Fixed serial communication on Windows.
+	* Adjustment of monitor library.
+	* 0.7.3 released.
+
+2009-02-03	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed to ignore previously remained receive data when connected.
+      c/urg_ctrl.c
+
+2009-02-02	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Implementation of urg_receivePartialData() in c/urg_ctrl.c
+	* 0.7.2 released.
+
+2009-01-29	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed slow serial communication on Windows.
+	* 0.7.1 released.
+
+2009-01-23	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed to detect SDL_net at 'configure'.
+	* Fixed to proceed to 'configure' without boost.
+	* Fixed to follow g++ 4.0.1 warning.
+
+2009-01-20	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed buffer overflow in RingBuffer.h
+
+2008-12-22	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Changed to use floor() instead of round() for Visual Studio 2005.
+	* Changed error message of serial connection in urg_ctrl.c
+	* Adjusted to be able to communicate with serial communication connection.
+	* 0.7.0 released.
+
+2008-12-16	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Changed to place dummy data in urg_ctrl.c::urg_requestData()
+
+2008-12-15	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Use round() in calculation of rad2index()
+	* RangeSensor::index2rad(), RangeSensor::rad2index() added.
+
+2008-12-11	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed broken vcproj.
+	* 0.6.3 released.
+
+2008-12-10	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Adjusted to be able to compile only in C if without SDL and Boost.
+	* 0.6.2 released.
+
+2008-12-09	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed broken vc8/c/c_urg.vcproj
+	* 0.6.1 released.
+
+2008-11-26	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Renewed laser stopping implementation in ScipHandler.cpp
+	* Fixed several trivial bugs.
+
+2008-10-28	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* urg/cpp/UrgUtils.h added.
+	* samples/cpp/viewSerialIdSample.cpp added.
+	* 0.0.9 released.
+
+2008-10-26	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed to detect connection of SCIP 1.1 products.
+	* 0.0.8 released.
+
+2008-10-20	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Character set changed to SJIS in lzh, zip package.
+	* VC8 project file added in C++ samples.
+
+2008-10-14	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* VC8 project file added in scip_samples.
+
+2008-10-09	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Receive buffer size changed to 4096 * 4 in Windows platform.
+
+2008-10-08	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* urg_remainCaptureTimes() implemented.
+	* 0.0.7 released.
+
+2008-10-08	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* urg_setCaptureTimes() implemented.
+	* 0.0.6 released.
+
+2008-09-22	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* vc8/urg.vcproj added for VC8 to build include/ and urg.lib
+
+2008-09-18	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* c_urg-config added.
+
+2008-09-02	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Function name ScipHandler::decode() changed to
+      ScipHandler::encode()
+
+2008-09-01	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* 0.0.5 released.
+
+2008-08-28	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* 'interface' removed from all names including 'Interface'.
+	* UrgCtrl::setSkipLines() implemented.
+	* FindUrgComPorts.h removed and its contents were merged
+      to FindComPorts.h
+
+2008-07-26	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed wrong transmission size in samples/scip_samples/
+	* Literal 'get' removed from all function names.
+	* 0.0.4 released.
+
+2008-07-25	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed random data transmission at unconnected error.
+
+2008-07-24	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Fixed connection error with UTM-30LX.
+
+2008-07-14	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* Some comments changed.
+	* 0.0.2 released.
+
+2008-06-25	Satofumi KAMIMURA <satofumi@uers.sourceforge.jp>
+	* 0.0.1 released.

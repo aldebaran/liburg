@@ -1,0 +1,105 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ(2.59)
+
+AC_INIT(urg, 0.8.11, satofumi@users.sourceforge.jp)
+AM_INIT_AUTOMAKE
+AC_CONFIG_SRCDIR([src/c/urg/urg_ctrl.c])
+AC_CONFIG_MACRO_DIR([m4])
+AM_CONFIG_HEADER([config.h])
+
+MAJOR_VERSION=`echo $VERSION | sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\1/'`
+MINOR_VERSION=`echo $VERSION | sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\2/'`
+MICRO_VERSION=`echo $VERSION | sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\3/'`
+AH_TEMPLATE(MAJOR_VERSION, [Major Version])
+AH_TEMPLATE(MINOR_VERSION, [Minor Version])
+AH_TEMPLATE(MICRO_VERSION, [Micro Version])
+AC_DEFINE_UNQUOTED(MAJOR_VERSION, "$MAJOR_VERSION")
+AC_DEFINE_UNQUOTED(MINOR_VERSION, "$MINOR_VERSION")
+AC_DEFINE_UNQUOTED(MICRO_VERSION, "$MICRO_VERSION")
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_LIBTOOL
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+
+# Checks for libraries.
+SDL_VERSION=1.2.4
+AH_TEMPLATE(HAVE_LIBSDL, [SDL Library])
+AM_PATH_SDL($SDL_VERSION, [AC_DEFINE(HAVE_LIBSDL) HAVE_LIBSDL="yes"], AC_MSG_WARN([*** SDL $SDL_VERSION or higher is not found!]))
+
+CXXFLAGS="$CFLAGS $SDL_CFLAGS"
+LIBS="$LIBS $SDL_LIBS"
+
+AH_TEMPLATE(HAVE_LIBSDL_NET, [SDL_net Library])
+AC_CHECK_LIB(SDL_net, SDLNet_Init, [AC_DEFINE(HAVE_LIBSDL_NET) LIBS="$LIBS -lSDL_net" HAVE_LIBSDL_NET="yes"], AC_MSG_WARN([*** SDL_net not found! ***]))
+
+INSTALL_LIBS="-lurg_monitor -lurg -lurg_coordinate -lurg_geometry -lurg_connection -lurg_connection_sdl -lurg_common -lurg_system"
+C_INSTALL_LIBS="-lc_urg -lc_urg_connection -lc_urg_system"
+AC_SUBST(INSTALL_LIBS)
+AC_SUBST(C_INSTALL_LIBS)
+
+# http://www.nongnu.org/autoconf-archive/index.html
+BOOST_VERSION=1.33.1
+AX_BOOST_BASE($BOOST_VERSION)
+
+CXXFLAGS="$CXXFLAGS $BOOST_CPPFLAGS"
+
+AM_CONDITIONAL(CPP_COMPILE_COND, test "x$HAVE_LIBSDL" = "xyes" -a "x$HAVE_LIBSDL_NET" = "xyes")
+AM_CONDITIONAL(BOOST_COMPILE_COND, test "x$HAVE_LIBBOOST" = "xyes")
+
+# Checks for header files.
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_CHECK_HEADERS([fcntl.h stddef.h stdlib.h string.h sys/time.h termios.h unistd.h])
+AC_SUBST(C_INCLUDES, "-I\${top_srcdir}/src/c/system -I\${top_srcdir}/src/c/connection -I\${top_srcdir}/src/c/urg")
+AC_SUBST(CPP_INCLUDES, "-I\${top_srcdir}/src/cpp/system -I\${top_srcdir}/src/cpp/common -I\${top_srcdir}/src/cpp/connection -I\${top_srcdir}/src/cpp/geometry -I\${top_srcdir}/src/cpp/coordinate -I\${top_srcdir}/src/cpp/urg -I\${top_srcdir}/src/cpp/connection/sdl -I\${top_srcdir}/src/cpp/monitor")
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_CONST
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+
+# Checks for library functions.
+AC_FUNC_CLOSEDIR_VOID
+AC_FUNC_MALLOC
+AC_FUNC_SELECT_ARGTYPES
+AC_FUNC_STRERROR_R
+AC_FUNC_VPRINTF
+AC_CHECK_FUNCS([atexit floor gettimeofday memmove select strerror strrchr strtol strstr])
+AC_SUBST(SAMPLES_LIBS_PATH, "-L\${top_builddir}/src/c/urg -L\${top_builddir}/src/c/connection -L\${top_builddir}/src/c/system -L\${top_builddir}/src/cpp/urg -L\${top_builddir}/src/cpp/connection -L\${top_builddir}/src/cpp/common -L\${top_builddir}/src/cpp/system -L\${top_builddir}/src/cpp/monitor -L\${top_builddir}/src/cpp/coordinate -L\${top_builddir}/src/cpp/geometry -L\${top_builddir}/src/cpp/connection/sdl")
+AC_CONFIG_FILES([Makefile
+                 include/Makefile
+                 include/c/Makefile
+                 include/cpp/Makefile
+                 src/Makefile
+		 src/c/Makefile
+                 src/c/system/Makefile
+                 src/c/connection/Makefile
+                 src/c/urg/Makefile
+		 src/cpp/Makefile
+                 src/cpp/system/Makefile
+                 src/cpp/common/Makefile
+                 src/cpp/connection/Makefile
+                 src/cpp/connection/sdl/Makefile
+                 src/cpp/coordinate/Makefile
+                 src/cpp/geometry/Makefile
+                 src/cpp/urg/Makefile
+                 src/cpp/monitor/Makefile
+                 samples/Makefile
+                 samples/c/Makefile
+                 samples/cpp/Makefile
+                 samples/scip_samples/Makefile
+                 samples/cpp_ethernet/Makefile
+		 urg-config
+		 c_urg-config])
+
+AC_OUTPUT([], [chmod +x urg-config
+	       chmod +x c_urg-config])

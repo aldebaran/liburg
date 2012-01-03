@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="shift_jis"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="urg"
+	ProjectGUID="{E35DE899-8736-4A8E-A604-821469165AF1}"
+	RootNamespace="urg"
+	Keyword="ManagedCProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaultsUpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			ManagedExtensions="0">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories=".\; ..\..\..\SDL_devel\include; ..\..\src\cpp\connection\sdl; ..\..\src\cpp\connection; ..\..\src\cpp\system; ..\..\src\cpp\coordinate; ..\..\src\cpp\monitor; ..\..\src\cpp\common; ..\..\src\cpp\geometry; ..\..\src\cpp\urg; .;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS"
+				MinimalRebuild="TRUE"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="SDL.lib SDLmain.lib"
+				AdditionalLibraryDirectories="..\..\..\SDL_devel\lib"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaultsUpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			ManagedExtensions="0">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories=".\; ..\..\..\SDL_devel\include; ..\..\src\cpp\connection\sdl; ..\..\src\cpp\connection; ..\..\src\cpp\system; ..\..\src\cpp\coordinate; ..\..\src\cpp\monitor; ..\..\src\cpp\common; ..\..\src\cpp\geometry; ..\..\src\cpp\urg; .;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS"
+				MinimalRebuild="TRUE"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="SDL.lib SDLmain.lib"
+				AdditionalLibraryDirectories="..\..\..\SDL_devel\lib"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File RelativePath="..\..\src\cpp\connection\sdl\TcpipSocket.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\sdl\TcpipServer.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\sdl\SocketSet.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\sdl\SdlNetInit.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\SerialDevice.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\ConnectionUtils.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\MonitorModeManager.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\SdlInit.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\Thread.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\Lock.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\LockGuard.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\Semaphore.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\ticks.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\delay.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\system_ticks.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\system_delay.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\log_printf.cpp"></File>
+			<File RelativePath="..\..\src\cpp\system\MathUtils.cpp"></File>
+			<File RelativePath="..\..\src\cpp\coordinate\Coordinate.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\MonitorDataHandler.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\MonitorModeManager.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\MonitorEventScheduler.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\DeviceIpManager.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\LogNameHolder.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\mConnection.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\mUrgCtrl.cpp"></File>
+			<File RelativePath="..\..\src\cpp\monitor\UrgServer.cpp"></File>
+			<File RelativePath="..\..\src\cpp\common\split.cpp"></File>
+			<File RelativePath="..\..\src\cpp\geometry\Angle.cpp"></File>
+			<File RelativePath="..\..\src\cpp\urg\UrgCtrl.cpp"></File>
+			<File RelativePath="..\..\src\cpp\urg\ScipHandler.cpp"></File>
+			<File RelativePath="..\..\src\cpp\urg\findUrgPorts.cpp"></File>
+			<File RelativePath="..\..\src\cpp\urg\UrgUsbCom.cpp"></File>
+			<File RelativePath="..\..\src\cpp\connection\findComPorts.cpp"></File>
+
+		</Filter>
+		<Filter
+			Name="Header files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+		</Filter>
+		<Filter
+			Name="Resource files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>
