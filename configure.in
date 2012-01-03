@@ -30,13 +30,14 @@ AC_PROG_RANLIB
 
 # Checks for libraries.
 SDL_VERSION=1.2.4
-AH_TEMPLATE(HAVE_LIBSDL, [SDL Library])
-AM_PATH_SDL($SDL_VERSION, [AC_DEFINE(HAVE_LIBSDL) HAVE_LIBSDL="yes"], AC_MSG_WARN([*** SDL $SDL_VERSION or higher is not found!]))
+#AH_TEMPLATE(HAVE_LIBSDL, [SDL Library])
+#AM_PATH_SDL($SDL_VERSION, [AC_DEFINE(HAVE_LIBSDL) HAVE_LIBSDL="yes"], AC_MSG_WARN([*** SDL $SDL_VERSION or higher is not found!]))
+
 CXXFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
 
-AH_TEMPLATE(HAVE_LIBSDL_NET, [SDL_net Library])
-AC_CHECK_LIB(SDL_net, SDLNet_Init, [AC_DEFINE(HAVE_LIBSDL_NET) LIBS="$LIBS -lSDL_net" HAVE_LIBSDL_NET="yes"], AC_MSG_WARN([*** SDL_net not found! ***]))
+#AH_TEMPLATE(HAVE_LIBSDL_NET, [SDL_net Library])
+#AC_CHECK_LIB(SDL_net, SDLNet_Init, [AC_DEFINE(HAVE_LIBSDL_NET) LIBS="$LIBS -lSDL_net" HAVE_LIBSDL_NET="yes"], AC_MSG_WARN([*** SDL_net not found! ***]))
 
 INSTALL_LIBS="-lurg_monitor -lurg -lurg_coordinate -lurg_geometry -lurg_connection -lurg_connection_sdl -lurg_common -lurg_system"
 C_INSTALL_LIBS="-lc_urg -lc_urg_connection -lc_urg_system"
@@ -46,7 +47,7 @@ AC_CHECK_LIB(m, cos, [C_INSTALL_LIBS="$C_INSTALL_LIBS -lm" INSTALL_LIBS="$INSTAL
 AC_SUBST(INSTALL_LIBS)
 AC_SUBST(C_INSTALL_LIBS)
 
-AM_CONDITIONAL(CPP_COMPILE_COND, test "x$HAVE_LIBSDL" = "xyes" -a "x$HAVE_LIBSDL_NET" = "xyes")
+AM_CONDITIONAL(CPP_COMPILE_COND, test x = xx)
 
 # Checks for header files.
 AC_HEADER_DIRENT
