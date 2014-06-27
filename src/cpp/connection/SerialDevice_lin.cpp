@@ -13,6 +13,11 @@
 #include <cstring>
 #include <cstdio>
 
+#if defined WINDOWS_OS
+#include <time.h>
+#else
+#include <sys/time.h>
+#endif
 
 class RawSerialDevice
 {

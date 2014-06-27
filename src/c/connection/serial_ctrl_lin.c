@@ -17,6 +17,13 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <string.h>
+#if defined WINDOWS_OS
+#include <time.h>
+#else
+#include <sys/time.h>
+#include <sys/select.h>
+#include <sys/types.h>
+#endif
 
 //#include <ctype.h>
 
